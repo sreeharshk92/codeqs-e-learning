@@ -1,0 +1,300 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 20px;
+    padding: 40px 10px;
+    background-color: #f7f7f7;
+    color: #5D5A6F;
+}
+
+.footer > div {
+    flex: 1;
+    margin: 0 20px;
+}
+
+.footer-one {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.fp {
+    padding-left: 7px;
+    font-size: 80%;
+}
+
+.logoimg {
+    width: 120px;
+    height: auto;
+}
+
+.social-icons {
+    display: flex;
+    list-style: none;
+    margin: 10px 0 0 7px;
+    padding: 0;
+}
+
+.social-icons li {
+    margin-right: 15px;
+    font-size: 20px;
+    color: #9C4DF4;
+    transition: color 0.3s;
+}
+
+.social-icons li:hover {
+    color: #ffcc00;
+}
+
+.footer-two, .footer-three, .footer-four {
+    padding: 0px;
+}
+
+.footer-two ul, .footer-three ul, .footer-four ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-two ul li, .footer-three ul li, .footer-four ul li {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.footer-two h2, .footer-three h2, .footer-four h2 {
+    margin-bottom: 15px;
+    margin-top: 3px;
+    font-size: 20px;
+    color: black;
+}
+
+.footer-two ul li:hover, .footer-three ul li:hover, .footer-four ul li:hover {
+    color: #ffcc00;
+    cursor: pointer;
+}
+
+.icon {
+    color: #9C4DF4;
+    margin-right: 10px;
+    font-size: 15px;
+}
+
+.footer-line {
+    border: none;
+    border-top: 1px solid #5D5A6F;
+    width: 100%;
+    height: 0;
+    margin: 10px 0;
+}
+
+/* Responsive styling */
+
+
+@media (max-width: 810px) {
+    .footer {
+        height: auto;
+        flex-direction: row; 
+        padding: 10px;
+    }
+    
+
+    .footer > div {
+        margin: 10px 0;
+    }
+
+    
+    .logoimg{
+        width: 110px;
+
+    }
+    .social-icons li {
+        font-size: 20px;
+    }
+   .fp{
+        font-size:13px;
+    }
+   .footer-two h2{
+         font-size: 1.1rem;
+    }
+   .footer-two ul li{
+        font-size: small;
+        padding: 0;
+        margin: 3px 0;
+    }
+    .footer-two .icon{
+        font-size:15px;
+    }
+    .footer-three ul li{
+        margin-bottom: 3px;
+       font-size:small;
+    }
+   .footer-three h2{
+    font-size: 1.1rem;
+}  
+   .footer-four h2{
+    font-size: 1.1rem;
+}
+   .footer-four ul li{
+       margin-bottom: 3px;
+      font-size:small;
+   }
+  
+}
+/* @media (max-width: 730px) {
+    .footer {
+        height: auto;
+        flex-direction: row; 
+        
+        padding: 10px;
+    }
+
+    .footer > div {
+        margin: 10px 0;
+    }
+
+    
+    .logoimg {
+        width: 110px;
+    }
+
+    .social-icons li {
+        font-size: 20px;
+    }
+
+    .fp {
+        font-size: 13px;
+    }
+
+    .footer-two h2 {
+        font-size: 1rem;
+    }
+
+    .footer-two ul li {
+        font-size: small;
+        padding: 0;
+        margin: 3px 0;
+    }
+
+    .footer-two .icon {
+        font-size: 15px;
+    }
+
+    .footer-three ul li {
+        margin-bottom: 3px;
+        font-size: small;
+    }
+
+    .footer-three h2, .footer-four h2 {
+        font-size: 1rem;
+    }
+
+    .footer-four ul li {
+        margin-bottom: 3px;
+        font-size: small;
+    } */
+/* } */
+
+@media (max-width: 728px) {
+    .footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 10px;
+    }
+
+    /* First row: footer-one and footer-two */
+    .footer-one, .footer-two {
+        width: 48%; /* Make sure both take 48% of the space */
+        margin-bottom: 10px; /* Space between rows */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Second row: footer-three and footer-four */
+    .footer-three, .footer-four {
+        width: 48%; /* Same width to ensure they are on the same row */
+        margin-bottom: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logoimg {
+        width: 110px;
+    }
+
+    .social-icons li {
+        font-size: 15px;
+    }
+
+    .fp {
+        font-size: x-small;
+    }
+
+    h2 {
+        font-size: .9rem;
+    }
+
+    ul li {
+        font-size: x-small;
+        margin: 3px 0;
+    }
+
+    .icon {
+        font-size: 12px;
+    }
+}
+@media (max-width: 480px) {
+    .footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        height: auto;
+        
+        margin: 0 0 20px 0;
+    }
+
+    /* First row: footer-one and footer-two */
+    .footer-one, .footer-two {
+        width: 50%; /* Make sure both take 48% of the space */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Second row: footer-three and footer-four */
+    .footer-three, .footer-four {
+        width: 50%; /* Same width to ensure they are on the same row */
+        margin-bottom: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logoimg {
+        width: 100px;
+    }
+
+    .social-icons li {
+        font-size: 15px;
+    }
+
+    .fp {
+        font-size: x-small;
+    }
+
+    .footer-two h2{
+        font-size: 1rem;
+        margin: 0;
+    }
+    
+
+    ul li {
+        font-size: x-small;
+        margin:  0;
+    }
+
+    .icon {
+        font-size: 12px;
+    }
+}
