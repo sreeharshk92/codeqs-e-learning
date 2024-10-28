@@ -1,0 +1,112 @@
+/* Banner section */
+.crs-bnr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #EFEBF5;
+    margin: 30px 56px;
+    border-radius: 15px;
+}
+
+.crs-img {
+    border-radius: 20px;
+    width: 100%;
+    max-width: 1200px; 
+    height: auto; 
+}
+
+/* Filters section */
+.filters {
+    display: flex;
+    gap: 1rem;
+    margin: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #f06d4f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.filter-btn:hover {
+    background-color: #ff8361;
+}
+
+.filter-btn.active {
+    background-color: #f06d4f;
+}
+
+.filter-btn:not(.active) {
+    background-color: #f1f1f1;
+    color: #1a1a1a;
+}
+
+/* Media queries for responsiveness */
+
+
+@media (max-width: 1024px) {
+    .crs-bnr {
+        margin: 20px 30px; /* Adjust margins for tablets */
+    }
+
+    .crs-img {
+        width: 100%; /* Maintain width without shrinking too much */
+        max-width: 900px; /* Smaller max width for tablets */
+    }
+
+    .filter-btn {
+        padding: 8px 16px; /* Slightly reduce padding for buttons */
+        margin: 5px; /* Compact spacing */
+        font-size: 0.9rem; /* Reduce font size slightly */
+    }
+}
+
+/* Mobile devices */
+@media (max-width: 768px) {
+    .crs-bnr {
+        margin: 10px 15px; /* Narrower margins for smaller screens */
+    }
+
+    .crs-img {
+        width: 100%; /* Ensure the image takes full width */
+        max-width: 1100px; /* Add more width for the banner on mobile */
+    }
+
+    .filters {
+        gap: 0.75rem; /* Maintain gap for horizontal alignment */
+    }
+
+    .filter-btn {
+        padding: 7px 14px; /* Further reduce padding */
+        font-size: 0.7rem; /* Further reduce font size for mobile */
+    }
+}
+
+/* Extra small devices (phones) */
+@media (max-width: 480px) {
+    .crs-bnr {
+        margin: 5px; /* Minimal margins */
+    }
+
+    .crs-img {
+        width: 100%; /* Full width for very small screens */
+        max-width: 1100px; /* Maintain more width for banner */
+    }
+
+    .filters {
+        gap: 0.5rem; /* Smaller gap between buttons */
+    }
+
+    .filter-btn {
+        padding: 5px 10px; /* Compact padding for small buttons */
+        font-size: 0.65rem; /* Further reduce font size for small screens */
+    }
+}
