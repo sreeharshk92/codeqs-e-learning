@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 import CourseCard from '../Coursecard/Coursecard';
-import { IoIosArrowDropright } from "react-icons/io";
 import './Allcourses.css'
 
 const courses = [
@@ -120,7 +119,7 @@ const Allcourses = () => {
 
         ))}
       </div>
-      <IoIosArrowDropright />
+      
       </div>
     </div>
     
