@@ -1,4 +1,4 @@
-import Allcourses from '../../Components/Allcourses/Allcourses';
+import Fcourses from '../../Components/Fcourses/Fcourses';
 import Banner from '../../Components/Banner/Banner';
 import Navbar from '../../Components/Navbar/Navbar';
 
@@ -9,7 +9,7 @@ const Home = () => {
     <div>
       <Navbar/>
      <Banner/>
-     <Allcourses/>
+     <Fcourses/>
     </div>
   );
 };

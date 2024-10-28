@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import CourseCard from '../Coursecard/Coursecard';
 import { IoIosArrowDropright } from "react-icons/io";
-import './Allcourses.css'
+import './Fcourses.css'
 
 const courses = [
   // Array of courses with dummy data
@@ -99,7 +99,7 @@ const courses = [
   // Add more courses as needed
 ];
 
-const Allcourses = () => {
+const Fcourses = () => {
   const navigate = useNavigate();
 
   const handlebtn = () => {
@@ -127,4 +127,4 @@ const Allcourses = () => {
   );
 };
 
-export default Allcourses;
+export default Fcourses;
