@@ -21,7 +21,7 @@ const Navbar = () => {
   return (
     <header className="navbar">
       <div>
-        <img src={logo} alt="" className='logo-img' />
+        {/* <img src={logo} alt="" className='logo-img' /> */}
       </div>
       <div className="search-bar">
         <input type="text" placeholder="Find your next skill to master..." />
