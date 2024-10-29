@@ -85,6 +85,15 @@
     height: 0;
     margin: 10px 0;
 }
+.footer-link {
+    text-decoration: none;
+    color: inherit; /* This will use the inherited text color */
+  }
+  
+  .footer-link:hover {
+    color: #007bff; /* Optional: change color on hover */
+  }
+  
 
 /* Responsive styling */
 

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import './Footer.css';
 import { IoLocationOutline } from "react-icons/io5";
@@ -34,20 +35,20 @@ const Footer = () => {
         <div className="footer-three">
           <h2>Documentation</h2>
           <ul>
-            <li>Help Center</li>
-            <li>Contact</li>
-            <li>FAQ</li>
-            <li>Privacy Policy</li>
+            <li><Link to="/help-center" className="footer-link">Help Center</Link></li>
+            <li><Link to="/contact" className="footer-link">Contact</Link></li>
+            <li><Link to="/faq" className="footer-link">FAQ</Link></li>
+            <li><Link to="/privacy-policy" className="footer-link">Privacy Policy</Link></li>
           </ul>
         </div>
         <div className="footer-four">
           <h2>Quick Link</h2>
           <ul>
-            <li>Home</li>
-            <li>Courses</li>
-            <li>Blog</li>
-            <li>About Us</li>
-            <li>Contact Us</li>
+            <li><Link to="/" className="footer-link">Home</Link></li>
+            <li><Link to="/courses" className="footer-link">Courses</Link></li>
+            <li><Link to="/blog" className="footer-link">Blog</Link></li>
+            <li><Link to="/about-us" className="footer-link">About Us</Link></li>
+            <li><Link to="/contact-us" className="footer-link">Contact Us</Link></li>
           </ul>
         </div>
       </div>
