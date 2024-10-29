@@ -1,7 +1,14 @@
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
+
 import './CourseCard.css';
 
 const CourseCard = ({ course }) => {
+  const navigate = useNavigate();
+
+  const handlecoursedetails = () => {
+    navigate('/Coursedetails');
+  }
   return (
     <div className="course-card">
       <img src={course.coverPic} alt={course.title} className="course-cover-pic" />
@@ -12,7 +19,10 @@ const CourseCard = ({ course }) => {
         <p className='ps'><strong>Rating:</strong> {course.rating} star / 5</p>
         <p className='ps'><strong>Total Hours:</strong> {course.totalHours}</p>
         <p className="course-price"><strong>Price:</strong> ${course.price}</p>
-        <a href={course.enrollLink} className="course-enroll-button">Enroll Now</a>
+        {/* <a href={course.enrollLink} className="course-enroll-button">Enroll Now</a> */}
+      <button onClick={handlecoursedetails} className="course-enroll-button">
+      Enroll Now
+      </button>
       </div>
     </div>
   );

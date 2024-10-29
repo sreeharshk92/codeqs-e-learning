@@ -33,8 +33,8 @@ const Navbar = () => {
           <CiSearch className="mob-search-icon" />
         </div>
 
-        <Link to="/"> <a >Home</a></Link>
-        <Link to="/courses"><a >Courses</a></Link>
+        <Link to="/"> Home</Link>
+        <Link to="/courses">Courses</Link>
 
 
        
