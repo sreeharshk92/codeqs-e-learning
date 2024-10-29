@@ -1,0 +1,266 @@
+.login{
+    width: 100%;
+    height: 100vh;
+    padding: 10px;
+    background-color: rgb(212, 206, 206);
+
+} 
+
+.login-form{
+    width: 100%;
+    border: solid 1px gray;
+    display: flex;
+    max-width: 900px;
+    background: white;
+    border-radius: 4px;
+    padding: 60px;
+    margin: auto;
+
+}
+.logo-img{
+    width: 120px;
+    padding: 30px 5px;
+}
+.logo-left{
+
+    width: 50%;
+    /* padding-right: 90px; */
+}
+.logo-left p {
+padding:  10px 0px 15px 0px ;
+font-size: 32px;
+margin:0 10px  ;
+}
+
+.login-img{
+    width: 340px;
+    padding: 0 10px;
+}
+hr{
+    margin:  0 70px;
+    height: 500px;
+}
+.login-form .logo-right{
+    width: 50%;
+    /* padding:10px 40px  ; */
+    
+}
+.logo-right h1{
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 28px;
+}
+.logo-right input{
+    width: 300px;
+    height: 35px;
+    /* background: #333; */
+    background-color: white;
+    color: black;
+    margin: 12px 0;
+    border: solid 1px gray;
+    outline: 0;
+    border-radius: 4px;
+    padding: 16px 20px;
+    font-size: 12px;
+    font-weight: 500;
+}
+.logo-rightform input::placeholder{
+    font-size: 16px;
+    font-weight: 500;
+
+}
+.logo-right button{
+    width: 300px;
+    border: 0;
+    outline: 0;
+    padding:16px ;
+    background: #9C4DF4;
+    color: white;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.form-help{
+    display:flex;
+    padding-right: 37px;
+    align-items: center;
+    justify-content: space-between;
+    color: #b3b3b3;
+    font-size: 13px;
+}
+.remember{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.chkbx{
+    background-color: white;
+}
+.remember input{
+    width:18px ;
+    height: 18px;
+
+}
+.form-switch{
+    margin-top: 40px;
+    color: #737373;
+}
+.form-switch span{
+    margin-left: 6px;
+    color: #463eed;
+    font-weight: 500;
+    cursor: pointer;
+}
+/* @media (max-width: 500px) {
+    .login{
+        padding: 15px 5%;
+    }
+    .login-form{
+        padding: 20px;
+        margin-top: 30px;
+    }
+} */
+
+/* Responsive Styles */
+@media (max-width: 1010px) {
+    .login{
+        width:fit-content;
+    }
+    .login-form {
+        flex-direction: column; /* Stack elements vertically */
+        padding: 20px;
+        width: 85%; /* Full width with some margin */
+        margin: auto; /* Center align */
+        align-items: center; /* Center align the content */
+    }
+
+    .logo-left {
+        display: block;
+        width: 100%; /* Full width for the logo section */
+        text-align: center; /* Center text */
+        margin-bottom: 20px; /* Space below the logo section */
+    }
+
+    .logo-right {
+        width: 300px; /* Fixed width for the form section */
+        text-align: center; /* Center text */
+        margin: 0 auto; /* Center align the form */
+    }
+
+    .login-img {
+        width: 100%; /* Make the image responsive */
+        max-width: 280px; /* Limit max width */
+        margin-top: 20px; /* Add space above the image */
+    }
+
+    hr {
+        display: none; /* Hide the line on smaller screens */
+    }
+
+    .logo-right input, 
+    .logo-right button {
+        width: 100%; /* Full width for inputs and button */
+        max-width: 300px; /* Limit max width */
+        margin-bottom: 12px; /* Add space between input fields */
+    }
+
+    .form-help {
+        flex-direction: row; /* Stack help text vertically */
+        align-items: center; /* Center align help text */
+        padding: 0 17px ; /* Remove right padding */
+        display:flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #b3b3b3;
+        font-size: 12px;
+    }
+   
+    .remember{
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    .chkbx{
+        background-color: white;
+    }
+    .remember input{
+        width:18px ;
+        height: 18px;
+    
+    }
+}
+@media (max-width: 640px) {
+    .login-form {
+        padding: 10px; /* Reduce padding around the form */
+        width: 90%; /* Adjust width to occupy more space */
+        margin-top: 10px; /* Center the form */
+    }
+
+    .logo-left {
+        margin: 10px; /* Remove margin */
+        text-align: left; /* Align text to the left */
+    }
+
+    .logo-left p {
+        display: none; /* Hide the paragraph text */
+    }
+
+    .logo-img {
+        width: 100px; /* Smaller logo size for compact view */
+        margin: 0; /* Remove margin */
+    }
+
+    .logo-right {
+        width: 100%; /* Full width for the form section */
+        margin-top: 5px; /* Reduce space above the form */
+        text-align: center; /* Align text to the left */
+    }
+.login-img{
+    display: none;
+}
+    .logo-right input,
+    .logo-right button {
+        padding: 10px; /* Reduce padding for smaller screens */
+        width: 100%; /* Full width for inputs and buttons */
+        max-width: 280px; /* Maximum width to keep them compact */
+        margin: 8px 0; /* Reduce margin between input fields */
+    }
+
+    h1 {
+        font-size: 24px; /* Slightly reduce heading size */
+        margin-left: 20px; /* Align more compactly */
+    }
+
+    .form-help {
+        flex-direction: row; /* Stack help text vertically */
+        align-items: flex-start; /* Align help text to the left */
+        padding-right: 0; /* Remove right padding */
+        display:flex;
+        margin-left: -10px ;
+        align-items: center;
+        justify-content: space-between;
+        color: #b3b3b3;
+        font-size: 10px;
+    }
+
+    .remember {
+        padding: 0px;
+        font-size: 10px; /* Reduce font size for compact view */
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    
+    
+    .chkbx{
+        background-color: white;
+       
+    }
+    .remember input{
+        width:15px ;
+        height: 15px;
+    
+    }
+}
