@@ -13,6 +13,8 @@ const courses = [
     totalHours: '12 hours',
     price: 49.99,
     enrollLink: '#',
+    durationInHours: 1.5, // Set the duration for countdown
+
   },{
     coverPic: 'https://via.placeholder.com/300x150',
     title: 'React Basics',
