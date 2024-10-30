@@ -1,0 +1,24 @@
+Countdown Timer Wrapper
+.countdown-timer {
+    color: #333;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  /* Responsive styling for tablet */
+  @media (max-width: 768px) {
+    .countdown-timer {
+      font-size: 13px;
+    }
+  }
+  
+  /* Responsive styling for mobile */
+  @media (max-width: 480px) {
+    .countdown-timer {
+      font-size: 10px;
+    }
+   
+  }
+  

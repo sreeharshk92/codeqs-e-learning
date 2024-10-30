@@ -1,7 +1,7 @@
 // CourseCard.jsx
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
-import CountdownTimer from '../CountdownTimer'; // Import CountdownTimer
+import CountdownTimer from '../CountdownTimer/CountdownTimer'; // Import CountdownTimer
 import './CourseCard.css';
 
 const CourseCard = ({ course }) => {
@@ -16,7 +16,7 @@ const CourseCard = ({ course }) => {
       <img src={course.coverPic} alt={course.title} className="course-cover-pic" />
       <div className="course-content">
         <h2 className="course-title">{course.title}</h2>
-        <p className="course-des">{course.description}</p>
+        {/* <p className="course-des">{course.description}</p> */}
         <p className="ps"><strong>Author:</strong> {course.author}</p>
         <p className="ps"><strong>Rating:</strong> {course.rating} star / 5</p>
         <p className="ps"><strong>Total Hours:</strong> {course.totalHours}</p>

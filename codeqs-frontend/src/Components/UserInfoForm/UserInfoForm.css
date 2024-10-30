@@ -15,7 +15,7 @@
   background: #ffffff;
   padding: 2rem;
   border-radius: 8px;
-  width: 100%;
+  width: 90%;
   max-width: 500px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
@@ -82,4 +82,59 @@
 
 .user-info-form button:hover {
   background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .user-info-form {
+    padding: 1.5rem;
+    width: 90%;
+  }
+  .user-info-form h3 {
+    font-size: 1.5rem;
+  }
+  .user-info-form p {
+    font-size: 0.85rem;
+  }
+  .user-info-form fieldset {
+    padding: 0.8rem;
+  }
+  .user-info-form label {
+    font-size: 0.85rem;
+  }
+  .user-info-form input {
+    padding: 0.4rem;
+    font-size: 0.95rem;
+  }
+  .user-info-form button {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .user-info-form {
+    padding: 1rem;
+    width: 100%;
+  }
+  .user-info-form h3 {
+    font-size: 1.2rem;
+  }
+  .user-info-form p {
+    font-size: 0.8rem;
+  }
+  .user-info-form fieldset {
+    padding: 0.5rem;
+  }
+  .user-info-form label {
+    font-size: 0.8rem;
+  }
+  .user-info-form input {
+    padding: 0.3rem;
+    font-size: 0.9rem;
+  }
+  .user-info-form button {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
 }

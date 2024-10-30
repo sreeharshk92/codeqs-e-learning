@@ -1,23 +1,20 @@
-// CountdownTimer.jsx
 import { useEffect, useState } from 'react';
+import "./CountdownTimer.css"
 
+// eslint-disable-next-line react/prop-types
 const CountdownTimer = ({ durationInHours }) => {
-  // Convert durationInHours to seconds
   const [timeLeft, setTimeLeft] = useState(durationInHours * 3600);
 
   useEffect(() => {
-    // If there's no time left, exit the timer early
     if (timeLeft <= 0) return;
 
     const timer = setInterval(() => {
       setTimeLeft((prevTime) => (prevTime > 0 ? prevTime - 1 : 0));
     }, 1000);
 
-    // Clean up interval on component unmount
     return () => clearInterval(timer);
   }, [timeLeft]);
 
-  // Format time as hh:mm:ss
   const formatTime = () => {
     const hours = Math.floor(timeLeft / 3600);
     const minutes = Math.floor((timeLeft % 3600) / 60);
@@ -26,8 +23,8 @@ const CountdownTimer = ({ durationInHours }) => {
   };
 
   return (
-    <div>
-      <p>Time Left: {formatTime()}</p>
+    <div className="countdown-timer">
+      <p >Time Left: {formatTime()}</p>
     </div>
   );
 };
