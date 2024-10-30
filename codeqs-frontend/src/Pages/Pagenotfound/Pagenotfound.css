@@ -1,5 +1,3 @@
-/* src/Pages/Pagenotfound/Pagenotfound.css */
-
 .page-not-found-container {
     display: flex;
     flex-direction: column;
@@ -9,6 +7,7 @@
     text-align: center;
     background-color: #f7f7f7; /* Light background color */
     color: #5D5A6F; /* Text color */
+    padding: 0 1rem; /* Add padding for smaller screens */
 }
 
 .page-not-found-title {
@@ -30,4 +29,26 @@
 
 .page-not-found-link:hover {
     color: #ffcc00; /* Change color on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .page-not-found-title {
+        font-size: 2.5rem; /* Reduce font size for tablets */
+    }
+    .page-not-found-message {
+        font-size: 1rem; /* Slightly smaller font size */
+    }
+}
+
+@media (max-width: 480px) {
+    .page-not-found-title {
+        font-size: 2rem; /* Smaller font size for mobile screens */
+    }
+    .page-not-found-message {
+        font-size: 0.9rem; /* Reduce font size for readability on small screens */
+    }
+    .page-not-found-link {
+        font-size: 1rem; /* Adjust link font size */
+    }
 }

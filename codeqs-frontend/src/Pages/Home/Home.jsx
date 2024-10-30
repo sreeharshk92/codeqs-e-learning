@@ -1,4 +1,3 @@
-import Allcourses from '../../Components/Allcourses/Allcourses';
 import Banner from '../../Components/Banner/Banner';
 import Fcourse from '../../Components/Featuredcourse/Fcourse';
 import Footer from '../../Components/Footer/Footer';
@@ -12,7 +11,6 @@ const Home = () => {
       <Navbar/>
      <Banner/>
     <Fcourse/>
-     <Allcourses/>
      <Footer/>
     </div>
   );

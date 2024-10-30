@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import  { useState, useEffect, useRef } from 'react';
 import './Coursedetails.css';
 import Navbar from '../../Components/Navbar/Navbar';
 import Footer from '../../Components/Footer/Footer';
@@ -60,7 +60,7 @@ const Coursedetails = () => {
       videoRef.current.play(); // Resume video playback
     }
   };
-
+ 
   return (
     <>
       <Navbar />
@@ -95,7 +95,7 @@ const Coursedetails = () => {
               <p>{courseData.whoThisCourseIsFor}</p>
             </div>
             <div className="section">
-              <h3>What you'll learn in this course</h3>
+              <h3>What you will learn in this course</h3>
               <ul>
                 {courseData.whatYouWillLearn.map((item, index) => (
                   <li key={index}>✔️ {item}</li>
@@ -115,7 +115,7 @@ const Coursedetails = () => {
           <p><strong>Certificate:</strong> {courseData.certificate}</p>
           <p><strong>Language:</strong> {courseData.language}</p>
           <p><strong>Access:</strong> {courseData.access}</p>
-          <button className="purchase-button">Purchase Course</button>
+          <button className="purchase-button"  >Purchase Course</button>
         </div>
       </div>
 

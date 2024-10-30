@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import './UserInfoForm.css';
 
+// eslint-disable-next-line react/prop-types
 const UserInfoForm = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
     name: '',
