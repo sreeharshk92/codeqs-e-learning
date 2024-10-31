@@ -1,0 +1,27 @@
+.edit-course {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.edit-course h2 {
+    text-align: center;
+}
+
+.edit-course div {
+    margin-bottom: 15px;
+}
+
+.edit-course label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.edit-course input,
+.edit-course select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
