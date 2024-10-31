@@ -47,7 +47,7 @@ const Course = () => {
                 console.error('Error adding course:', data.error);
             } else {
                 console.log('Course added successfully:', data);
-                navigate('/admin-dashboard');
+                navigate('/courselist');
             }
         } catch (error) {
             console.error('Error saving course:', error);
