@@ -72,19 +72,19 @@
   
     .bnr-left {
       text-align: left; /* Center-align text on smaller screens */
-      padding-right: 0;
+      margin-left: 20px;
     }
   
     .bnr-img {
-      max-width: 50%; /* Reduce image size */
+      max-width: 100%; /* Reduce image size */
     }
   
     .b-h1 {
-      font-size: 1.5rem; /* Adjust heading size */
+      font-size: 1.9rem; /* Adjust heading size */
     }
   
     .bnr-p {
-      font-size: 0.6rem;
+      font-size: 0.9rem;
     }
   
     .btn1, .btn2 {
@@ -99,24 +99,24 @@
     }
   
     .bnr-left {
-      margin-left: 0;
+      margin-left: 20px;
       text-align: left; /* Center text on mobile */
       padding-bottom: 20px;
     }
   
     .bnr-img {
-      max-width: 90%; /* Smaller image */
+      width: 80%; /* Smaller image */
     }
   
     .b-h1 {
       margin-left: 1px;
-      font-size: 1rem; /* Slightly smaller heading */
+      font-size: 1.3rem; /* Slightly smaller heading */
     }
   
-    /* .bnr-p {
-      margin-left: 1px;
-      font-size: 0.6rem;
-    } */
+    .bnr-p {
+      margin-right: 50px;
+      font-size: 0.8rem;
+    }
   
     .btn1, .btn2 {
       padding: 5px 12px; /* Reduce padding */
@@ -129,7 +129,10 @@
     .banner {
       height: auto; /* Let height adjust naturally */
     }
-  
+    .bnr-left {
+      margin: 0px;
+    }
+
     .bnr-img {
       width: 100%; /* Smaller image for mobile */
     }
@@ -139,7 +142,9 @@
     }
   
     .bnr-p {
-      font-size: 0.4rem;
+      margin-right: 0px;
+
+      font-size: 9px;
     }
   
     .btn1, .btn2 {

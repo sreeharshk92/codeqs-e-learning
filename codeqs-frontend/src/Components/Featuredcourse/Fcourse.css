@@ -112,10 +112,14 @@
   
     .hdr-h1 {
       font-size: 1.2rem;
+      margin-left: -11px;
     }
   
     .hdr-p {
-      font-size: 9px;
+      font-size: .6rem;
+      margin-left: -11px;
+      margin-right: 10px;
+
     }
     .all-courses-btn {
       background-color: #ff5e5e;
