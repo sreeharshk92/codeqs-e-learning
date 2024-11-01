@@ -1,126 +1,112 @@
-import  { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+import { useParams } from 'react-router-dom';
 import './Coursedetails.css';
 import Navbar from '../../Components/Navbar/Navbar';
 import Footer from '../../Components/Footer/Footer';
 import UserInfoForm from '../../Components/UserInfoForm/UserInfoForm';
 
 const Coursedetails = () => {
-  const videoRef = useRef(null); // Reference to the video element
+  const { courseId } = useParams();
+  const videoRef = useRef(null);
+  const [courseData, setCourseData] = useState(null);
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [isVideoAccessible, setIsVideoAccessible] = useState(false);
-
-  const courseData = {
-    title: 'JAVA Programming for Complete Beginners | Episode 2 | Belly Elrish',
-    price: '₹2,999',
-    instructor: 'Wade Warren',
-    ratings: '⭐⭐⭐⭐⭐',
-    duration: '10 Days',
-    lessons: 30,
-    quizzes: 5,
-    certificate: 'Available',
-    language: 'English',
-    access: 'Lifetime',
-    courseDetails: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
-    certification: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
-    whoThisCourseIsFor: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
-    whatYouWillLearn: [
-      'Learn basics of JAVA',
-      'Understand object-oriented programming',
-      'Develop simple applications in JAVA',
-      'Prepare for advanced JAVA topics'
-    ],
-    videoUrl: "https://www.youtube.com/embed/MYy7oGQiSqI?si=TylIoksZhyS5Dg3V" // Replace with actual video URL from backend
-  };
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    // Start video playback and set timer for the form popup
+    const fetchCourseDetails = async () => {
+      try {
+        console.log(`Fetching course with ID: ${courseId}`);
+        const response = await fetch(`http://localhost:8000/api/courses/${courseId}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch course details');
+        }
+        const data = await response.json();
+        console.log('Fetched course data:', data);
+        
+        // Update this line to set the correct part of the data response
+        setCourseData(data.course || data.data.course); // Adjust based on API response structure
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCourseDetails();
+  }, [courseId]);
+
+    
+
+  useEffect(() => {
     if (videoRef.current) {
       videoRef.current.play();
     }
 
     const timer = setTimeout(() => {
-      setIsFormVisible(true); // Show form after 5 seconds
+      setIsFormVisible(true);
       if (videoRef.current) {
-        videoRef.current.pause(); // Pause video when the form is visible
+        videoRef.current.pause();
       }
     }, 5000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [courseData]);
 
   const handleFormSubmit = (formData) => {
-    // Handle form submission (e.g., send data to backend, etc.)
     console.log('User Information Submitted:', formData);
-    setIsFormVisible(false); // Hide the form
-    setIsVideoAccessible(true); // Give full video access to the user
+    setIsFormVisible(false);
+    setIsVideoAccessible(true);
 
-    // Allow video controls and resume playback after successful form submission
     if (videoRef.current) {
       videoRef.current.controls = true;
-      videoRef.current.play(); // Resume video playback
+      videoRef.current.play();
     }
   };
- 
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+  if (!courseData || Object.keys(courseData).length === 0) return <p>No course data found</p>;
+
   return (
     <>
       <Navbar />
       <div className="course-details-page">
         <div className="main-content">
-          {/* Video Section */}
           <div className="video-section">
             <video
               ref={videoRef}
-              src={courseData.videoUrl}
-              controls={isVideoAccessible} // Controls only accessible after form submission
+              src={courseData.videos[0]} // Assuming videos is an array
+              controls={isVideoAccessible}
               autoPlay
             >
               Your browser does not support the video tag.
             </video>
           </div>
-
-          {/* Course Content */}
           <div className="course-content">
-            <div className="section">
-            <h2>{courseData.title}</h2>
-
-              <h3>Course Details</h3>
-              <p>{courseData.courseDetails}</p>
-            </div>
-            <div className="section">
-              <h3>Certification</h3>
-              <p>{courseData.certification}</p>
-            </div>
-            <div className="section">
-              <h3>Who this course is for</h3>
-              <p>{courseData.whoThisCourseIsFor}</p>
-            </div>
-            <div className="section">
-              <h3>What you will learn in this course</h3>
-              <ul>
-                {courseData.whatYouWillLearn.map((item, index) => (
-                  <li key={index}>✔️ {item}</li>
-                ))}
-              </ul>
-            </div>
+            <h2>{courseData.name}</h2>
+            <p><strong>Description:</strong> {courseData.description}</p>
+            <p><strong>Mentor:</strong> {courseData.mentor || 'N/A'}</p>
+            <p><strong>Price:</strong> ₹{courseData.price.toFixed(2)}</p>
+            <p><strong>Rating:</strong> {courseData.rating ? courseData.rating.toFixed(1) : 'N/A'}</p>
+            <p><strong>Total Hours:</strong> {courseData.total_hours || 'N/A'}</p>
+            <p><strong>Certificate:</strong> {courseData.certificates || 'N/A'}</p>
+            <h3>Learning Outcomes</h3>
+            <ul>
+              {courseData.learning_outcomes && courseData.learning_outcomes.map((outcome, index) => (
+                <li key={index}>{outcome}</li>
+              ))}
+            </ul>
           </div>
         </div>
-
-        {/* Purchase Section */}
         <div className="purchase-section">
-          <h3>Price: {courseData.price}</h3>
-          <p><strong>Instructor:</strong> {courseData.instructor}</p>
-          <p><strong>Ratings:</strong> {courseData.ratings}</p>
-          <p><strong>Duration:</strong> {courseData.duration}</p>
-          <p><strong>Quizzes:</strong> {courseData.quizzes}</p>
-          <p><strong>Certificate:</strong> {courseData.certificate}</p>
-          <p><strong>Language:</strong> {courseData.language}</p>
-          <p><strong>Access:</strong> {courseData.access}</p>
-          <button className="purchase-button"  >Purchase Course</button>
+          <h3>Price: ₹{courseData.price.toFixed(2)}</h3>
+          <button className="purchase-button">Purchase Course</button>
         </div>
       </div>
 
       {isFormVisible && <UserInfoForm onSubmit={handleFormSubmit} />}
-
       <Footer />
     </>
   );

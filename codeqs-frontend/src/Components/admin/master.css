@@ -1,0 +1,48 @@
+/* adminDashboard.css */
+.admin-dashboard-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.dashboard-body {
+    display: flex;
+    flex: 1;
+}
+
+.master-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #343a40;
+    color: white;
+    padding: 10px;
+}
+
+.left-menu {
+    position: fixed;
+    top: 50px; /* Adjust based on master height */
+    left: 0;
+    width: 250px;
+    height: calc(100vh - 50px); /* Adjust height */
+    background-color: #1c2a39;
+    padding: 20px;
+}
+
+.dashboard-content {
+    margin-left: 250px; /* Adjust based on left menu width */
+    padding: 20px;
+    width: 100%;
+}
+
+.course-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.dashboard-header {
+    text-align: center;
+}
