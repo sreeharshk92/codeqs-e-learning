@@ -68,41 +68,40 @@ const Coursedetails = () => {
     <>
       <Navbar />
       <div className="course-details-page">
-  <div className="main-content">
-    <div className="video-section">
-      <video
-        ref={videoRef}
-        src={`http://localhost:8000/storage/videos/${courseData.videos[0]}`}
-        controls={isVideoAccessible}
-        autoPlay
-      >
-        Your browser does not support the video tag.
-      </video>
-    </div>
+        <div className="main-content">
+          <div className="video-section">
+            <video
+              ref={videoRef}
+              src={videoURL}
+              controls={isVideoAccessible}
+              autoPlay
+            >
+              Your browser does not support the video tag.
+            </video>
+          </div>
 
-    <div className="course-content">
-      <h2>{courseData.name}</h2>
-      <p><strong>Description:</strong> {courseData.description}</p>
-      <p><strong>Mentor:</strong> {courseData.mentor || 'N/A'}</p>
-      <p><strong>Price:</strong> ₹{courseData.price.toFixed(2)}</p>
-      <p><strong>Rating:</strong> {courseData.rating ? courseData.rating.toFixed(1) : 'N/A'}</p>
-      <p><strong>Total Hours:</strong> {courseData.total_hours || 'N/A'}</p>
-      <p><strong>Certificate:</strong> {courseData.certificates || 'N/A'}</p>
-      <h3>Learning Outcomes</h3>
-      <ul>
-        {courseData.learning_outcomes && courseData.learning_outcomes.map((outcome, index) => (
-          <li key={index}>{outcome}</li>
-        ))}
-      </ul>
-    </div>
-  </div>
+          <div className="course-content">
+            <h2>{courseData.name}</h2>
+            <p><strong>Description:</strong> {courseData.description}</p>
+            <p><strong>Mentor:</strong> {courseData.mentor || 'N/A'}</p>
+            <p><strong>Price:</strong> ₹{courseData.price.toFixed(2)}</p>
+            <p><strong>Rating:</strong> {courseData.rating ? courseData.rating.toFixed(1) : 'N/A'}</p>
+            <p><strong>Total Hours:</strong> {courseData.total_hours || 'N/A'}</p>
+            <p><strong>Certificate:</strong> {courseData.certificates || 'N/A'}</p>
+            <h3>Learning Outcomes</h3>
+            <ul>
+              {courseData.learning_outcomes && courseData.learning_outcomes.map((outcome, index) => (
+                <li key={index}>{outcome}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
 
-  <div className="purchase-section">
-    <h3>Price: ₹{courseData.price.toFixed(2)}</h3>
-    <button className="purchase-button">Purchase Course</button>
-  </div>
-</div>
-
+        <div className="purchase-section">
+          <h3>Price: ₹{courseData.price.toFixed(2)}</h3>
+          <button className="purchase-button">Purchase Course</button>
+        </div>
+      </div>
 
       {isFormVisible && <UserInfoForm onSubmit={handleFormSubmit} />}
       <Footer />

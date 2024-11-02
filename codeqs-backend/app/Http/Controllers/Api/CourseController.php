@@ -118,4 +118,5 @@ class CourseController extends Controller
             return response()->json(['error' => 'Failed to update course'], 500);
         }
     }
+    
 }
