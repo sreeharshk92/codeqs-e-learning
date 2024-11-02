@@ -1,9 +1,8 @@
-// Allcourses.jsx
 import React, { useEffect, useState } from 'react';
 import CourseCard from '../Coursecard/Coursecard';
 import './Allcourses.css';
 
-const Allcourses = () => {
+const AllCourses = () => {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -46,4 +45,4 @@ const Allcourses = () => {
   );
 };
 
-export default Allcourses;
+export default AllCourses;
