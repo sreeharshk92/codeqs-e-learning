@@ -1,9 +1,14 @@
 import { useEffect, useState } from 'react';
-import "./CountdownTimer.css"
+import "./CountdownTimer.css";
 
 // eslint-disable-next-line react/prop-types
 const CountdownTimer = ({ durationInHours }) => {
+  // Initialize timeLeft in seconds
   const [timeLeft, setTimeLeft] = useState(durationInHours * 3600);
+
+  useEffect(() => {
+    setTimeLeft(durationInHours * 3600); // Reset timer when duration changes
+  }, [durationInHours]);
 
   useEffect(() => {
     if (timeLeft <= 0) return;
@@ -24,7 +29,7 @@ const CountdownTimer = ({ durationInHours }) => {
 
   return (
     <div className="countdown-timer">
-      <p >Time Left: {formatTime()}</p>
+      <p>Time Left: {formatTime()}</p>
     </div>
   );
 };

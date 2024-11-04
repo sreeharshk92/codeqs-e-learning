@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\CourseController;
+
+
+use App\Http\Controllers\Api\UserInfoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,3 +19,4 @@ Route::get('/courses', [CourseController::class, 'list']);
 Route::delete('/courses/{id}', [CourseController::class, 'delete']);
 Route::get('/courses/{id}', [CourseController::class, 'show']);
 Route::put('/courses/{id}', [CourseController::class, 'update']);
+Route::post('/personal', [UserInfoController::class, 'userinfo']);

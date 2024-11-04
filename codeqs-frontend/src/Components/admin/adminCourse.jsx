@@ -6,7 +6,7 @@ const Course = () => {
     const navigate = useNavigate();
     const [categories, setCategories] = useState([]);
     const [learningOutcomes, setLearningOutcomes] = useState(['']);
-    const [videos, setVideos] = useState(['']);
+    const [videos, setVideos] = useState([null]); // Initialize with one empty file input
 
     useEffect(() => {
         const fetchCategories = async () => {
@@ -29,17 +29,23 @@ const Course = () => {
         e.preventDefault();
         const formData = new FormData(e.target);
 
-        // Append learning outcomes and videos as arrays
+        // Append learning outcomes as arrays
         learningOutcomes.forEach((outcome, index) => formData.append(`learning_outcomes[${index}]`, outcome));
-        videos.forEach((video, index) => formData.append(`videos[${index}]`, video));
+        
+        // Append video files
+        videos.forEach((video) => {
+            if (video) {
+                formData.append('videos[]', video);
+            }
+        });
 
         try {
             const response = await fetch('http://localhost:8000/api/courses', {
                 method: 'POST',
+                body: formData,
                 headers: {
                     'Accept': 'application/json',
                 },
-                body: formData,
             });
 
             const data = await response.json();
@@ -60,14 +66,14 @@ const Course = () => {
         setLearningOutcomes(updatedOutcomes);
     };
 
-    const handleVideoChange = (index, value) => {
+    const handleVideoChange = (index, file) => {
         const updatedVideos = [...videos];
-        updatedVideos[index] = value;
+        updatedVideos[index] = file;
         setVideos(updatedVideos);
     };
 
     const addLearningOutcome = () => setLearningOutcomes([...learningOutcomes, '']);
-    const addVideo = () => setVideos([...videos, '']);
+    const addVideo = () => setVideos([...videos, null]); // Add a null entry for the new file input
 
     return (
         <section className="course-section">
@@ -80,7 +86,11 @@ const Course = () => {
                     </div>
                     <div className="form-group">
                         <label>Price</label>
-                        <input type="text" className="form-control" name="price" placeholder="Enter price" required />
+                        <input type="number" className="form-control" name="price" placeholder="Enter price" required />
+                    </div>
+                    <div className="form-group">
+                        <label>Duration in Hours</label>
+                        <input type="number" className="form-control" name="duration_in_hours" placeholder="Enter duration in hours" required />
                     </div>
                     <div className="form-group">
                         <label>Category</label>
@@ -109,11 +119,9 @@ const Course = () => {
                         <label>Image</label>
                         <input type="file" className="form-control-file" name="image" required />
                     </div>
-
-                    {/* New fields */}
                     <div className="form-group">
                         <label>Description</label>
-                        <textarea className="form-control" name="description" placeholder="Enter course description" />
+                        <textarea className="form-control" name="description" placeholder="Enter course description"></textarea>
                     </div>
                     <div className="form-group">
                         <label>Mentor</label>
@@ -129,11 +137,11 @@ const Course = () => {
                     </div>
                     <div className="form-group">
                         <label>Total Hours</label>
-                        <input type="number" className="form-control" name="total_hours" placeholder="Enter total hours" />
+                        <input type="number" className="form-control" name="total_hours" placeholder="Enter total hours" required />
                     </div>
                     <div className="form-group">
                         <label>Short Description</label>
-                        <textarea className="form-control" name="short_description" placeholder="Enter short description" />
+                        <textarea className="form-control" name="short_description" placeholder="Enter short description"></textarea>
                     </div>
 
                     {/* Dynamic Learning Outcomes */}
@@ -159,11 +167,10 @@ const Course = () => {
                         {videos.map((video, index) => (
                             <input
                                 key={index}
-                                type="text"
-                                className="form-control"
-                                value={video}
-                                onChange={(e) => handleVideoChange(index, e.target.value)}
-                                placeholder={`Video URL ${index + 1}`}
+                                type="file"
+                                className="form-control-file"
+                                onChange={(e) => handleVideoChange(index, e.target.files[0])} // Get the file
+                                placeholder={`Upload Video ${index + 1}`}
                                 required
                             />
                         ))}
