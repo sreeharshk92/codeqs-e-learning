@@ -6,6 +6,11 @@ Countdown Timer Wrapper
     text-align: center;
     font-size: 14px;
   }
+  .countdown-p{
+    font-size: .6em;
+    /* color: #555; */
+    margin-bottom: 5px;
+  }
   
   /* Responsive styling for tablet */
   @media (max-width: 768px) {

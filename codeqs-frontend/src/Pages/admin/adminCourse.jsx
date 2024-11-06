@@ -88,7 +88,7 @@ const Course = () => {
         <section className="admin-course-section">
             <div className="admin-course-container">
                 
-                <h2>Add New Course</h2>
+                <h2 className='course-h2'>Add New Course</h2>
                 <form onSubmit={handleSubmit} encType="multipart/form-data" className="course-form">
                     <div className="form-group">
                         <label>Name</label>

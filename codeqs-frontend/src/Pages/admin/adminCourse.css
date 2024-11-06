@@ -21,7 +21,7 @@
 }
 
 /* Heading Styling */
-h2 {
+.course-h2 {
     font-size: 2em;
     margin-bottom: 30px;
     color: #2c3e50;
