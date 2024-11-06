@@ -1,0 +1,228 @@
+/* Universal Box Sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Section Styling */
+.admin-course-section {
+    padding: 40px;
+    background-color: #f3f5f7;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    margin: 90px auto;
+    max-width: 700px;
+    width: 100%; /* Ensures the section takes full width up to the max-width */
+}
+
+/* Container Styling */
+.admin-course-container {
+    margin-top: 10px;
+    width: 100%;
+}
+
+/* Heading Styling */
+h2 {
+    font-size: 2em;
+    margin-bottom: 30px;
+    color: #2c3e50;
+    text-align: center;
+}
+
+/* Form Styling */
+.course-form {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Ensures the form takes full width */
+}
+
+/* Form Group Styling */
+.form-group {
+    margin-bottom: 20px;
+    background-color: white;
+
+}
+
+.form-group label {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #333;
+    background-color: white;
+
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* Input Styling */
+.form-control, .form-control-file {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccd1d9;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 1rem;
+}
+
+.form-control:focus {
+    border-color: #1abc9c;
+    box-shadow: 0 0 5px rgba(26, 188, 156, 0.5);
+    outline: none;
+}
+
+/* Radio Group Styling */
+.radio-group {
+    display: flex;
+    gap: 15px;
+    background-color: white;
+
+    align-items: center;
+}
+
+.radio-group label {
+    color: #333;
+}
+
+/* Submit Button Styling */
+.btn-submit {
+    background-color: #3498db;
+    color: #ffffff;
+    padding: 14px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    width: 100%;
+    text-align: center;
+}
+
+.btn-submit:hover {
+    background-color:#0e6cab;
+    transform: translateY(-2px); /* Slight lifting effect on hover */
+}
+
+.btn-submit:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba(26, 188, 156, 0.4); /* Light glow on focus */
+}
+
+/* Optional Secondary Button Styling */
+.btn-secondary {
+    background-color: #3498db;
+    color: #ffffff;
+    padding: 10px;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.btn-secondary:hover {
+    background-color: #2980b9;
+}
+
+/* Textarea Styling */
+textarea.form-control {
+    resize: vertical;
+    min-height: 100px;
+}
+/* Large Screens (Desktop) */
+/* @media (min-width: 1024px) {
+    .admin-course-section {
+        padding: 50px;
+        max-width: 1000px;
+    }
+
+    .course-form {
+        padding: 40px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .form-group label {
+        flex: 1;
+        min-width: 150px;
+    }
+
+    .form-group .form-control, .form-group .form-control-file {
+        flex: 2;
+        min-width: 250px;
+    }
+} */
+
+/* Tablets (768px to 1024px) */
+/* @media (max-width: 700px) and (min-width: 768px) {
+    .admin-course-section {
+        padding: 30px;
+        max-width: 90%;
+    }
+
+    .course-form {
+        padding: 30px;
+    }
+
+    .form-group {
+        display: block;
+    }
+
+    .form-group label {
+        margin-bottom: 8px;
+    }
+
+    .form-group .form-control, .form-group .form-control-file {
+        width: 100%;
+    }
+
+    .btn-submit {
+        padding: 12px;
+    }
+} */
+
+/* Small Screens (Mobile) */
+@media (max-width: 667px) {
+    .admin-course-section {
+        padding: 20px;
+        max-width: 100%;
+    }
+
+    .course-form {
+        padding: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        font-size: 1rem;
+    }
+
+    .form-group .form-control, .form-group .form-control-file {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+
+    .btn-submit {
+        padding: 12px;
+    }
+
+    .btn-secondary {
+        font-size: 0.8rem;
+        padding: 8px;
+    }
+}
+
+/* Left menu hiding for mobile */
+@media (max-width: 1213px) {
+    .admin-course-section.left-menu {
+        display: none; /* Hide left menu after 768px */
+    }
+}

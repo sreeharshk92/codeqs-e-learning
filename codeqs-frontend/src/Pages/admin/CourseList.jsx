@@ -1,6 +1,8 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './CourseList.css';
+import Master from './layout/Master';
 
 const CourseList = () => {
     const [courses, setCourses] = useState([]);
@@ -54,9 +56,13 @@ const CourseList = () => {
 
     return (
         <section className="course-section">
-            <div className="container">
-                <h1>Courses ({courses.length})</h1>
+            <div>
+                <Master />
+                <div className='course-table'>
+                    <div className="course-header">
+                <h3 className='course-h3'>Courses ({courses.length})</h3>
                 <Link to="/admin-courses" className="btn btn-primary">Add Course</Link>
+                </div>
                 <table className="table table-bordered mt-3">
                     <thead>
                         <tr>
@@ -135,6 +141,7 @@ const CourseList = () => {
                         })}
                     </tbody>
                 </table>
+               </div>
             </div>
         </section>
     );

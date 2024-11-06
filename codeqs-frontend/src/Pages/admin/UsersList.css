@@ -1,0 +1,31 @@
+.user-dashboard-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+}
+
+.user-dashboard-body {
+    display: flex;
+}
+
+.user-dashboard-content {
+    margin-left: 250px;
+    margin-top: 100px;
+    padding: 20px;
+    width: calc(100% - 250px);
+    background-color:#F7F5FA ;
+    color: #333;
+    font-size: 1.2em;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .user-dashboard-content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .left-menu {
+        display: none;
+    }
+}
