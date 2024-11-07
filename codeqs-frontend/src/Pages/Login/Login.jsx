@@ -5,6 +5,7 @@ import login from '../../assets/login.png';
 import { useNavigate } from 'react-router-dom';
 import { FaArrowLeft } from "react-icons/fa";
 
+
 const Login = () => {
     const [signState, setSignState] = useState('Sign In');
     const [name, setName] = useState('');
@@ -15,12 +16,12 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError(''); 
+        setError('');
         const url = signState === 'Sign In' ? 'http://localhost:8000/api/login' : 'http://localhost:8000/api/register';
         
         const body = signState === 'Sign In'
             ? { email, password }
-            : { name, email, password }; 
+            : { name, email, password };
 
         try {
             const response = await fetch(url, {
@@ -32,27 +33,28 @@ const Login = () => {
             });
             const data = await response.json();
             if (response.ok) {
-               
                 console.log(data.message);
-                navigate("/");
+
+                // Store user role
+                const userRole = data.user.role; // Ensure your API response includes the role
+                localStorage.setItem('userRole', userRole); // Storing role in local storage
+
+                // Navigate based on role
+                if (userRole === 'admin') {
+                    navigate('/admin-dashboard');
+                } else {
+                    navigate('/');
+                }
             } else {
                 setError(data.message);
             }
-        // eslint-disable-next-line no-unused-vars
         } catch (err) {
             setError('Something went wrong. Please try again.');
         }
     };
 
-  const handlehome= () => {
-    navigate('/'); 
-  }
-
     return (
-        <div className='login' style={{ display: 'inline',  backgroundColor:'#F7F5FA'}}>
-           
-            <FaArrowLeft onClick={handlehome} style={{fontSize:'30px', paddingLeft:'10px',marginTop:'10px'}}/>
-            
+        <div className='login' style={{ display: 'inline' }}>
             <div className="login-form">
                 <div className="logo-left">
                     <img src={logo} alt="" className='logo-img' />
@@ -88,7 +90,7 @@ const Login = () => {
                         <div className="form-help">
                             <div className="remember">
                                 <input type="checkbox" className='chkbx' />
-                                <label htmlFor="" className='rm'>Remember Me</label>
+                                <label htmlFor="">Remember Me</label>
                             </div>
                             <p>Need Help?</p>
                         </div>
