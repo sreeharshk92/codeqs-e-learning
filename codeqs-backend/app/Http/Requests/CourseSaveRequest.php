@@ -17,7 +17,7 @@ class CourseSaveRequest extends FormRequest
             'name' => 'required|string|max:255',
             'price' => 'required|numeric|min:0',
             'category_id' => 'nullable|exists:categories,id',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png',
             'status' => 'boolean',
             'is_favourite' => 'boolean',
             'description' => 'nullable|string',
@@ -30,7 +30,7 @@ class CourseSaveRequest extends FormRequest
             'learning_outcomes.*' => 'string',
             'zoom_link' => 'nullable|url',
             'videos' => 'nullable|array',
-            'videos.*' => 'file|mimes:mp4,mov,avi,mkv|max:10240',
+            'videos.*' => 'file',
             'duration_in_hours' => 'nullable|integer|min:0',
         ];
     }
