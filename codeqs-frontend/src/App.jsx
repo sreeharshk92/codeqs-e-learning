@@ -4,10 +4,11 @@ import Courses from './Pages/Courses/Courses';
 import Login from './Pages/Login/Login';
 import Coursedetails from './Pages/Coursedetails/Coursedetails';
 import Pagenotfound from './Pages/Pagenotfound/Pagenotfound'; // Ensure you have this page
-import CourseList from './Components/admin/CourseList';
-import Course from './Components/admin/adminCourse';
-import EditCourse from './Components/admin/EditCourse';
-import AdminDashboard from './Components/AdminDashboard';
+import CourseList from './/Pages/admin/CourseList';
+import Course from './/Pages/admin/adminCourse';
+import EditCourse from './Pages/admin/EditCourse';
+import AdminDashboard from './Pages/admin/AdminDashboard';
+import UsersList from './Pages/admin/UsersList'
 
 const App = () => {
     return (
@@ -22,7 +23,8 @@ const App = () => {
                 <Route path="/admin-dashboard" element={ <AdminDashboard /> } />
                 <Route path="/admin-courses" element={<Course />}  />
                 <Route path="/courselist" element={<CourseList />}  />
-               
+                <Route path="/userslist" element={<UsersList/>}  />
+
                 <Route path="/admin/course/edit/:id" element={<EditCourse />} />
 
             </Routes>

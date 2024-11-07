@@ -80,8 +80,8 @@ const Coursedetails = () => {
             </video>
           </div>
 
-          <div className="course-content">
-            <h2>{courseData.name}</h2>
+          <div className="course-details-content">
+            <h2  className="course-details-content-h2">{courseData.name}</h2>
             <p><strong>Description:</strong> {courseData.description}</p>
             <p><strong>Mentor:</strong> {courseData.mentor || 'N/A'}</p>
             <p><strong>Price:</strong> ₹{courseData.price.toFixed(2)}</p>

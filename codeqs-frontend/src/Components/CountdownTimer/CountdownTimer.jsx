@@ -29,7 +29,7 @@ const CountdownTimer = ({ durationInHours }) => {
 
   return (
     <div className="countdown-timer">
-      <p>Time Left: {formatTime()}</p>
+      <p className="countdown-p" >Time Left: {formatTime()}</p>
     </div>
   );
 };

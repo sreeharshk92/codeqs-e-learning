@@ -1,6 +1,8 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './course.css'; // Ensure this CSS file exists
+import './adminCourse.css'; // Ensure this CSS file exists
+import DefaultAdminLayout from './layout/DefaultAdminLayout';
 
 const Course = () => {
     const navigate = useNavigate();
@@ -39,6 +41,11 @@ const Course = () => {
             }
         });
 
+ // Check the contents of the FormData
+ for (let pair of formData.entries()) {
+    console.log(`${pair[0]}:`, pair[1]);
+}
+
         try {
             const response = await fetch('http://localhost:8000/api/courses', {
                 method: 'POST',
@@ -76,9 +83,12 @@ const Course = () => {
     const addVideo = () => setVideos([...videos, null]); // Add a null entry for the new file input
 
     return (
-        <section className="course-section">
-            <div className="container">
-                <h2>Add New Course</h2>
+     
+        < DefaultAdminLayout>
+        <section className="admin-course-section">
+            <div className="admin-course-container">
+                
+                <h2 className='course-h2'>Add New Course</h2>
                 <form onSubmit={handleSubmit} encType="multipart/form-data" className="course-form">
                     <div className="form-group">
                         <label>Name</label>
@@ -182,10 +192,11 @@ const Course = () => {
                         <input type="url" className="form-control" name="zoom_link" placeholder="Enter Zoom link" />
                     </div>
 
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <button type="submit" className="btn-submit">Submit</button>
                 </form>
             </div>
         </section>
+        </DefaultAdminLayout>   
     );
 };
 

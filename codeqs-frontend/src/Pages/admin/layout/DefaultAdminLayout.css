@@ -1,0 +1,38 @@
+
+
+.default-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.layout-body {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.left-menu {
+    width: 250px; /* Fixed sidebar width */
+    background-color: #343a40;
+    color: white;
+    height: 100%;
+}
+
+.layout-content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .left-menu {
+        display: none;
+    }
+    .layout-content {
+        padding: 10px;
+    }
+}

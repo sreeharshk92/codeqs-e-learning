@@ -34,25 +34,25 @@
   border-radius: 8px;
 }
 
-.course-content {
+.course-details-content {
   flex: 1 1 35%;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.course-content h2 {
+.course-details-content-h2 {
   font-size: 1.8em;
   color: #333;
 }
 
-.course-content p {
+.course-details-contentp {
   font-size: 1em;
   color: #555;
   margin-bottom: 5px;
 }
 
-.course-content ul {
+.course-details-content ul {
   list-style: none;
   padding: 0;
   color: #333;
@@ -100,7 +100,7 @@
     align-items: center;
   }
 
-  .video-section, .course-content, .purchase-section {
+  .video-section, .course-details-content, .purchase-section {
     width: 100%;
   }
 }

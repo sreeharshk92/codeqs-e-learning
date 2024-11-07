@@ -18,4 +18,8 @@ class UserInfoController extends Controller
 
         return response()->json(['message' => 'User info saved successfully!'], 201);
     }
+    public function show(){
+        $userinfo = Userinfo::latest()->get();
+        return response()->json($userinfo);
+    }
 }

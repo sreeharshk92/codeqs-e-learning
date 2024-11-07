@@ -20,3 +20,4 @@ Route::delete('/courses/{id}', [CourseController::class, 'delete']);
 Route::get('/courses/{id}', [CourseController::class, 'show']);
 Route::put('/courses/{id}', [CourseController::class, 'update']);
 Route::post('/personal', [UserInfoController::class, 'userinfo']);
+Route::get('/show',[UserInfoController::class, 'show']);
