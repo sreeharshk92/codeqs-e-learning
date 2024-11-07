@@ -52,9 +52,14 @@ const Login = () => {
             setError('Something went wrong. Please try again.');
         }
     };
+    const handlehome= () => {
+        navigate('/'); 
+      }
+    
 
     return (
         <div className='login' style={{ display: 'inline' }}>
+         <FaArrowLeft onClick={handlehome} style={{fontSize:'30px', paddingLeft:'10px',marginTop:'10px'}}/>
             <div className="login-form">
                 <div className="logo-left">
                     <img src={logo} alt="" className='logo-img' />
