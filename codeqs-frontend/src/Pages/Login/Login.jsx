@@ -5,7 +5,6 @@ import login from '../../assets/login.png';
 import { useNavigate } from 'react-router-dom';
 import { FaArrowLeft } from "react-icons/fa";
 
-
 const Login = () => {
     const [signState, setSignState] = useState('Sign In');
     const [name, setName] = useState('');
@@ -32,12 +31,26 @@ const Login = () => {
                 body: JSON.stringify(body),
             });
             const data = await response.json();
-            if (response.ok) {
-                console.log(data.message);
 
-                // Store user role
-                const userRole = data.user.role; // Ensure your API response includes the role
-                localStorage.setItem('userRole', userRole); // Storing role in local storage
+            console.log("API response:", data); // Debug: Log the entire API response
+
+            if (response.ok) {
+                console.log("Login successful for:", data.user.name);
+
+                // Store user details if available
+                const userRole = data.user.role;
+                const userName = data.user.name;
+                const userEmail = data.user.email;
+
+                if (userRole) {
+                    localStorage.setItem('userRole', userRole); // Store role
+                    localStorage.setItem('userName', userName); // Store name
+                    localStorage.setItem('userEmail', userEmail); // Store email
+                }
+
+                if (data.token) {
+                    localStorage.setItem('token', data.token); // Store token if available
+                }
 
                 // Navigate based on role
                 if (userRole === 'admin') {
