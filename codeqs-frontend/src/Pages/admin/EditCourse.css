@@ -1,27 +1,31 @@
 .edit-course {
-    max-width: 600px;
-    margin: auto;
+    max-width: 800px;
+    margin: 0 auto;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
 }
 
-.edit-course h2 {
-    text-align: center;
+.edit-course h1 {
+    color: #333;
+    margin-bottom: 30px;
 }
 
-.edit-course div {
-    margin-bottom: 15px;
+.error-message {
+    color: #dc2626;
+    background-color: #fef2f2;
+    border: 1px solid #fee2e2;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.375rem;
 }
 
-.edit-course label {
-    display: block;
-    margin-bottom: 5px;
+.spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
 }
 
-.edit-course input,
-.edit-course select {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
+.course-form {
+    background: #fff;
+    padding
 }

@@ -131,7 +131,7 @@ const CourseList = () => {
                                         )}
                                     </td>
                                     <td>
-                                        <Link to={`/admin-courses/${course.id}`} className="btn btn-warning btn-sm">Edit</Link>
+                                        <Link to={`/admin/course/edit/${course.id}`} className="btn btn-warning btn-sm">Edit</Link>
                                         <button 
                                             className="btn btn-danger btn-sm" 
                                             onClick={() => handleDelete(course.id)}>Delete</button>

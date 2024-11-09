@@ -16,7 +16,8 @@ const CourseCard = ({ course }) => {
       <div className="course-content">
         <h2 className="course-title">{course.name}</h2>
         <p className="ps"><strong>Author:</strong> {course.mentor}</p>
-        <p className="ps"><strong>Rating:</strong> {course.rating} star / 5</p>
+        <p className="ps"><strong>Description:</strong> {course.short_description}</p>
+        <p className="ps"><strong>Rating:</strong> {course.rating} ⭐ / 5⭐</p>
         <p className="ps"><strong>Total Hours:</strong> {course.total_hours}</p>
         <p className="course-price"><strong>Price:</strong> ${course.price.toFixed(2)}</p>
         {/* Pass durationInHours to CountdownTimer */}
