@@ -15,12 +15,12 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError(''); 
+        setError('');
         const url = signState === 'Sign In' ? 'http://localhost:8000/api/login' : 'http://localhost:8000/api/register';
         
         const body = signState === 'Sign In'
             ? { email, password }
-            : { name, email, password }; 
+            : { name, email, password };
 
         try {
             const response = await fetch(url, {
@@ -31,28 +31,48 @@ const Login = () => {
                 body: JSON.stringify(body),
             });
             const data = await response.json();
+
+            console.log("API response:", data); // Debug: Log the entire API response
+
             if (response.ok) {
-               
-                console.log(data.message);
-                navigate("/");
+                console.log("Login successful for:", data.user.name);
+
+                // Store user details if available
+                const userRole = data.user.role;
+                const userName = data.user.name;
+                const userEmail = data.user.email;
+
+                if (userRole) {
+                    localStorage.setItem('userRole', userRole); // Store role
+                    localStorage.setItem('userName', userName); // Store name
+                    localStorage.setItem('userEmail', userEmail); // Store email
+                }
+
+                if (data.token) {
+                    localStorage.setItem('token', data.token); // Store token if available
+                }
+
+                // Navigate based on role
+                if (userRole === 'admin') {
+                    navigate('/admin-dashboard');
+                } else {
+                    navigate('/');
+                }
             } else {
                 setError(data.message);
             }
-        // eslint-disable-next-line no-unused-vars
         } catch (err) {
             setError('Something went wrong. Please try again.');
         }
     };
-
-  const handlehome= () => {
-    navigate('/'); 
-  }
+    const handlehome= () => {
+        navigate('/'); 
+      }
+    
 
     return (
-        <div className='login' style={{ display: 'inline',  backgroundColor:'#F7F5FA'}}>
-           
-            <FaArrowLeft onClick={handlehome} style={{fontSize:'30px', paddingLeft:'10px',marginTop:'10px'}}/>
-            
+        <div className='login' style={{ display: 'inline' }}>
+         <FaArrowLeft onClick={handlehome} style={{fontSize:'30px', paddingLeft:'10px',marginTop:'10px'}}/>
             <div className="login-form">
                 <div className="logo-left">
                     <img src={logo} alt="" className='logo-img' />
@@ -88,7 +108,7 @@ const Login = () => {
                         <div className="form-help">
                             <div className="remember">
                                 <input type="checkbox" className='chkbx' />
-                                <label htmlFor="" className='rm'>Remember Me</label>
+                                <label htmlFor="">Remember Me</label>
                             </div>
                             <p>Need Help?</p>
                         </div>

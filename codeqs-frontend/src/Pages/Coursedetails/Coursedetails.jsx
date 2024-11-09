@@ -17,15 +17,11 @@ const Coursedetails = () => {
   useEffect(() => {
     const fetchCourseDetails = async () => {
       try {
-        console.log(`Fetching course with ID: ${courseId}`);
         const response = await fetch(`http://localhost:8000/api/courses/${courseId}`);
         if (!response.ok) {
           throw new Error('Failed to fetch course details');
         }
         const data = await response.json();
-        console.log('Fetched course data:', data);
-        
-        // Update this line to set the correct part of the data response
         setCourseData(data.course || data.data.course); // Adjust based on API response structure
       } catch (error) {
         setError(error.message);
@@ -36,8 +32,6 @@ const Coursedetails = () => {
 
     fetchCourseDetails();
   }, [courseId]);
-
-    
 
   useEffect(() => {
     if (videoRef.current) {
@@ -55,7 +49,6 @@ const Coursedetails = () => {
   }, [courseData]);
 
   const handleFormSubmit = (formData) => {
-    console.log('User Information Submitted:', formData);
     setIsFormVisible(false);
     setIsVideoAccessible(true);
 
@@ -69,6 +62,8 @@ const Coursedetails = () => {
   if (error) return <p>Error: {error}</p>;
   if (!courseData || Object.keys(courseData).length === 0) return <p>No course data found</p>;
 
+  const videoURL = `http://localhost:8000/storage/videos/${courseData.videos[0]}`;
+
   return (
     <>
       <Navbar />
@@ -77,15 +72,16 @@ const Coursedetails = () => {
           <div className="video-section">
             <video
               ref={videoRef}
-              src={courseData.videos[0]} // Assuming videos is an array
+              src={videoURL}
               controls={isVideoAccessible}
               autoPlay
             >
               Your browser does not support the video tag.
             </video>
           </div>
-          <div className="course-content">
-            <h2>{courseData.name}</h2>
+
+          <div className="course-details-content">
+            <h2  className="course-details-content-h2">{courseData.name}</h2>
             <p><strong>Description:</strong> {courseData.description}</p>
             <p><strong>Mentor:</strong> {courseData.mentor || 'N/A'}</p>
             <p><strong>Price:</strong> ₹{courseData.price.toFixed(2)}</p>
@@ -100,6 +96,7 @@ const Coursedetails = () => {
             </ul>
           </div>
         </div>
+
         <div className="purchase-section">
           <h3>Price: ₹{courseData.price.toFixed(2)}</h3>
           <button className="purchase-button">Purchase Course</button>

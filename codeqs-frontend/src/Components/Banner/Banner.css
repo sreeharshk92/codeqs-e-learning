@@ -59,7 +59,7 @@
     transition: all 0.3s ease-in-out; /* Smooth transition */
   }
   
-  p {
+.bnr-p {
     margin: 10px 0;
     transition: all 0.3s ease-in-out; /* Smooth transition */
   }

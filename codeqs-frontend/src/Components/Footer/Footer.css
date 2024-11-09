@@ -9,7 +9,7 @@
 
 .footer > div {
     flex: 1;
-    margin: 0 20px;
+    margin: 0 70px;
 }
 
 .footer-one {
@@ -50,9 +50,17 @@
     padding: 0px;
 }
 
-.footer-two ul, .footer-three ul, .footer-four ul {
+.footer-two ul{
     list-style: none;
-    padding: 0;
+    padding-left: 50px;
+} 
+.footer-three ul{
+    list-style: none;
+    padding-left: 50px;
+} 
+.footer-four ul {
+    list-style: none;
+    padding-left: 70px;
 }
 
 .footer-two ul li, .footer-three ul li, .footer-four ul li {
