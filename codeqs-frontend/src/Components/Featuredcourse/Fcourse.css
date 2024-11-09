@@ -3,13 +3,14 @@
     background-color: #F7F5FA ;
 
 }
+
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-left: 35px;
   }
-  
+
   .all-courses-btn {
     background-color: #ff5e5e;
     color: white;
