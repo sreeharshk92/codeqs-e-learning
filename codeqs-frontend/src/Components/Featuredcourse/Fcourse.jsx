@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import CourseCard from '../Coursecard/Coursecard';
 import { useNavigate } from 'react-router-dom';
 // import Allcourses from '../Allcourses/Allcourses';
-import './Fcourse.css';
+import '../Allcourses/Allcourses.css';
 
 const Fcourse = () => {
   const navigate = useNavigate();

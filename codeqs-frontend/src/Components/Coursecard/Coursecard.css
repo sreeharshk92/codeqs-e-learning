@@ -3,12 +3,12 @@
   border: 1px solid #e0e0e0;
   border-radius: 10px;
   padding: 16px;
-  /* height: 50vh; */
-  width: 250px;
+  height: 62vh;
+  width: 300px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   transition: transform 0.3s ease;
 }
 
@@ -18,38 +18,38 @@
 
 .course-cover-pic {
   width: 100%;
-  height: 150px;
+  height: auto;
   object-fit: cover;
   border-radius: 10px;
 }
 
 .course-content {
   margin: 10px;
-  
+ 
 }
 
 .course-title {
-  margin-top: 0;
-  padding:5px 0; 
-  font-size: 15px;
+  margin-bottom: 10px;
+  /* padding:5px 0;  */
+  /* font-size: 30px; */
   font-weight: bold;
 }
 
-.course-des {
+/* .course-des {
   color: #555;
   padding: 0 0 5px 0;
   font-size: 10px;
   margin:0 ;
-}
+} */
 
 .ps{
-  font-size: 10px;
-  padding: 0 0 5px 0;
+  /* font-size: 18px; */
+  padding: 0 0 10px 0;
   margin: 0;
 }
 
 .course-price {
-  font-size: 10px;
+  /* font-size: 19px; */
   color: #27ae60;
   margin: 0;
 }
@@ -61,12 +61,12 @@
   text-decoration: none;
   border: none;
   border-radius: 5px;
-  font-size: 12px;
+  font-size: 18px;
   text-align: center;
   display: block;
   width: 100%;
   cursor: pointer;
-  margin-top: 10px;
+  /* margin-top: 10px; */
 }
 
 .course-enroll-button:hover {
@@ -74,9 +74,9 @@
 }
 
 /* Responsive styles */
-@media (max-width: 1200px) {
+@media (max-width: 1124px) {
   .course-card {
-    height: 280px;
+    height: 65vh;
     width: auto;
   }
   /* .course-content{
@@ -85,8 +85,7 @@
   } */
   .course-title {
    padding: 0;
-   margin: 1px;
-    font-size: 12px; /* Smallest title */
+    font-size: 20px; /* Smallest title */
 
   }
 
@@ -97,7 +96,7 @@
   }
   
   .ps{
-    font-size: 11px;
+    font-size: 15px;
     padding: 1px;
     margin: 0;
   }
@@ -105,21 +104,20 @@
   .course-price {
     padding: 1px;
     margin: 0;
-    font-size: 11px; /* Smallest price */
+    font-size: 15px; /* Smallest price */
   }
   .course-enroll-button{
-    height: 1.7rem;
-    font-size:11px;
-    padding: 7px;
-    margin: 0;
+    font-size: 15px;
+
   }
 
 }
 
-@media (max-width: 992px) {
+@media (max-width: 775px) {
+ 
   .course-card {
-    width: auto;
-    height: 280px;
+    /* height: 70vh; */
+    width: 290px;
   }
   /* .course-content{
     padding: 0;
@@ -127,8 +125,7 @@
   } */
   .course-title {
    padding: 0;
-   margin: 1px;
-    font-size: 11px; /* Smallest title */
+    font-size: 20px; /* Smallest title */
 
   }
 
@@ -139,7 +136,7 @@
   }
   
   .ps{
-    font-size: 10px;
+    font-size: 15px;
     padding: 1px;
     margin: 0;
   }
@@ -147,31 +144,29 @@
   .course-price {
     padding: 1px;
     margin: 0;
-    font-size: 10px; /* Smallest price */
+    font-size: 15px; /* Smallest price */
   }
   .course-enroll-button{
-    height: 1.6rem;
-    font-size:11px;
-    padding: 6px;
-    margin: 0;
+    font-size:15px;
+   
   }
 
 }
 @media (max-width: 480px) {
   .course-card {
-    height: 200px;
-    width: 150px;
+    height: 60vh;
+    width: 300px;
   }
   /* .course-content{
     padding: 0;
     margin: 0;
   } */
   .course-title {
-   padding: 0;
-   margin: 1px;
-    font-size: 9px; /* Smallest title */
+    margin-top: 0;
+    font-size: 17px; /* Smallest title */
 
   }
+  
 
   .course-des {
     padding: 1px;
@@ -180,7 +175,7 @@
   }
   
   .ps{
-    font-size: 8px;
+    font-size: 13px;
     padding: 1px;
     margin: 0;
   }
@@ -188,12 +183,9 @@
   .course-price {
     padding: 1px;
     margin: 0;
-    font-size: 8px; /* Smallest price */
+    font-size: 13px; /* Smallest price */
   }
-  .course-enroll-button{
-    height: 1rem;
-    font-size:9px;
-    padding: 3px;
-    margin: 0;
+  .course-enroll-button {
+    font-size: 13px;
   }
 }
