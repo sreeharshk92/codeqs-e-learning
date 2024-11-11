@@ -7,6 +7,8 @@ import './AdminDashboard.css';
 
 const AdminDashboard = () =>{
     const navigate = useNavigate();
+    const adminName = localStorage.getItem('userName') || 'Admin';
+    const adminemail = localStorage.getItem('userEmail') || 'admin email';
     const handleLogout = () => {
         localStorage.removeItem('userRole'); // Remove user role
         navigate('/login'); // Redirect to login
@@ -25,7 +27,8 @@ const AdminDashboard = () =>{
                         <div className="profile-info">
                             <img src="path/to/profile.jpg" alt="Profile" className="profile-pic" />
                             <div className="admin-details">
-                                <h2>Admin Name</h2>
+                                <h2>{adminName}</h2>
+                                <p>{adminemail}</p>
                                 <div className="admin-btns">
                                    <button onClick={handleLogout}  className="logout-btn">Logout</button>
                                    <button  className="logout-btn">Edit</button>

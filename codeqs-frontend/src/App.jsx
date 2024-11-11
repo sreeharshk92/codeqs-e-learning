@@ -6,10 +6,10 @@ import Coursedetails from './Pages/Coursedetails/Coursedetails';
 import Pagenotfound from './Pages/Pagenotfound/Pagenotfound';
 import CourseList from './Pages/admin/CourseList';
 import Course from './Pages/admin/adminCourse';
-import EditCourse from './Pages/admin/EditCourse';
 import AdminDashboard from './Pages/admin/AdminDashboard';
 import UsersList from './Pages/admin/UsersList';
 import PrivateRoute from './Components/PrivateRoute';
+import EditCourse from './Pages/admin/EditCourse';
 
 
 const App = () => {
