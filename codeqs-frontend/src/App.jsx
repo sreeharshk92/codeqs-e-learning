@@ -10,6 +10,7 @@ import AdminDashboard from './Pages/admin/AdminDashboard';
 import UsersList from './Pages/admin/UsersList';
 import PrivateRoute from './Components/PrivateRoute';
 import EditCourse from './Pages/admin/EditCourse';
+import PaymentsList from './Pages/admin/PaymentsList';
 
 
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
                     <Route path="/admin-courses" element={<Course />} />
                     <Route path="/courselist" element={<CourseList />} />
                     <Route path="/userslist" element={<UsersList />} />
+                    <Route path="/paymentslist" element={<PaymentsList />} />
                     <Route path="/admin/course/edit/:id" element={<EditCourse />} />
                 </Route>
             </Routes>

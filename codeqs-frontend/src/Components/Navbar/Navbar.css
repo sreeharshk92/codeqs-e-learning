@@ -13,7 +13,6 @@
     justify-content: space-between;
     align-items: center;
     background-color: #F7F5FA ;
-;
     padding: 1rem 3rem;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
     position: relative;
@@ -31,7 +30,8 @@
     /* margin-right: 2rem; */
     margin-left: 3rem;
   }
-  
+
+ 
   .search-bar input {
     padding: 0.7rem 1rem 0.7rem 2.5rem;
     border-radius: 2rem;
@@ -69,7 +69,7 @@
   .nav-links a {
     text-decoration: none;
     color: #333;
-    font-size:1.2rem; 
+    font-size:1.3rem; 
     padding: 0.5rem .5rem; 
     transition: color 0.3s ease; 
   }

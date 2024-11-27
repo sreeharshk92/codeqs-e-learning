@@ -4,6 +4,7 @@ import './Coursedetails.css';
 import Navbar from '../../Components/Navbar/Navbar';
 import Footer from '../../Components/Footer/Footer';
 import UserInfoForm from '../../Components/UserInfoForm/UserInfoForm';
+import axios from 'axios';
 
 const Coursedetails = () => {
   const { courseId } = useParams();
@@ -13,6 +14,7 @@ const Coursedetails = () => {
   const [isVideoAccessible, setIsVideoAccessible] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+
 
   useEffect(() => {
     const fetchCourseDetails = async () => {
@@ -25,6 +27,7 @@ const Coursedetails = () => {
         setCourseData(data.course || data.data.course); // Adjust based on API response structure
       } catch (error) {
         setError(error.message);
+        setAmount(courseData.price)
       } finally {
         setLoading(false);
       }
@@ -52,6 +55,10 @@ const Coursedetails = () => {
     setIsFormVisible(false);
     setIsVideoAccessible(true);
 
+    // Save user info to localStorage
+    localStorage.setItem('userPaymentInfo', JSON.stringify(formData));
+    
+
     if (videoRef.current) {
       videoRef.current.controls = true;
       videoRef.current.play();
@@ -63,6 +70,88 @@ const Coursedetails = () => {
   if (!courseData || Object.keys(courseData).length === 0) return <p>No course data found</p>;
 
   const videoURL = `http://localhost:8000/storage/videos/${courseData.videos[0]}`;
+
+
+  /////// Payment function starts here //////////////
+  const handlePayment = async () => {
+    try {
+      const userPaymentInfo = JSON.parse(localStorage.getItem('userPaymentInfo'));
+      if (!userPaymentInfo || !userPaymentInfo.name || !userPaymentInfo.email || !userPaymentInfo.phone) {
+        alert("Please fill in your information to proceed with the payment.");
+        return;
+      }
+
+      
+    const formattedPhone = userPaymentInfo.phone.replace(/\D/g, '');
+    console.log('Formatted phone:', formattedPhone); // Log the formatted phone number
+
+    const amount = Math.round(courseData.price);
+
+  
+      const response = await axios.post("http://127.0.0.1:8000/api/create-order", {
+        amount: amount,
+        name: userPaymentInfo.name,
+        email: userPaymentInfo.email,
+        phone: formattedPhone,
+      });
+  
+      const { order_id } = response.data;
+      if (!order_id) {
+        alert("Order ID not returned from backend.");
+        return;
+      }
+  
+      const options = {
+        key: "rzp_test_ruOiF1gDsqblik",
+        amount: amount * 100,
+        currency: "INR",
+        name: "CODEQS",
+        description: `Payment for ${courseData.name}`,
+        order_id: order_id,
+        handler: async function (response) {
+          try {
+            const verificationResponse = await axios.post("http://127.0.0.1:8000/api/verify-payment", {
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature,
+              amount: amount,
+              name: userPaymentInfo.name,
+              email: userPaymentInfo.email,
+              phone: formattedPhone,
+              course_name: courseData.name,
+            });
+            if (verificationResponse.data.status === 'Payment verified successfully') {
+              alert("Payment successful!");
+            } else {
+              alert("Payment verification failed.");
+            }
+          } catch (error) {
+            console.error("Verification error:", error);
+            alert("Error during payment verification. See console for details.");
+          }
+        },
+        prefill: {
+          name: userPaymentInfo.name,
+          email: userPaymentInfo.email,
+          phone: formattedPhone,
+        },
+        notes: {
+          address: "Razorpay Corporate Office"
+        },
+        theme: {
+          color: "#F37254"
+        }
+      };
+  
+      const razorpay = new window.Razorpay(options);
+      razorpay.open();
+    } catch (error) {
+      console.error("Order creation error:", error);
+      alert("Error creating order. See console for details.");
+    }
+  };
+  
+  /////// Payment function ends here //////////////
 
   return (
     <>
@@ -99,7 +188,8 @@ const Coursedetails = () => {
 
         <div className="purchase-section">
           <h3>Price: ₹{courseData.price.toFixed(2)}</h3>
-          <button className="purchase-button">Purchase Course</button>
+          
+          <button onClick={handlePayment} className="purchase-button">Purchase Course</button>
         </div>
       </div>
 

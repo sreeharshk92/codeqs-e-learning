@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\CourseController;
 
 
 use App\Http\Controllers\Api\UserInfoController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +24,13 @@ Route::get('/courses/{id}', [CourseController::class, 'show']);
 Route::put('/courses/{id}', [CourseController::class, 'update']);
 Route::post('/personal', [UserInfoController::class, 'userinfo']);
 Route::get('/show',[UserInfoController::class, 'show']);
+Route::get('/payments-list',[PaymentController::class, 'paymentsList']);
+
+Route::post('/create-order', [PaymentController::class, 'createOrder']);
+Route::post('/verify-payment', [PaymentController::class, 'verifyPayment']);
+
+Route::get('/search-courses/{key}',[CourseController::class,'searchCourses']);
+
+
+
+

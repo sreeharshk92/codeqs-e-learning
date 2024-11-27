@@ -22,4 +22,12 @@ class Course extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+
+    public function payment()
+    {
+        return $this->hasMany(Payment::class);
+    }
+
+
 }

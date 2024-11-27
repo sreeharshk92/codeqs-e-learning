@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import CourseCard from '../Coursecard/Coursecard';
 import './Allcourses.css';
 
-const AllCourses = () => {
+const AllCourses = ({searchTerm}) => {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -26,6 +26,10 @@ const AllCourses = () => {
     fetchCourses();
   }, []);
 
+  const filteredCourses = courses.filter((course) =>
+    course.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
@@ -36,7 +40,7 @@ const AllCourses = () => {
       </div>
       <div className='g-arrow'>
         <div className="course-grid">
-          {courses.map((course) => (
+        {filteredCourses.map((course) => (
             <CourseCard key={course.id} course={course} />
           ))}
         </div>

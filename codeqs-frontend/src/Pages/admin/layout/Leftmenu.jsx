@@ -44,10 +44,10 @@ const LeftMenu = () => {
                     </Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/payment" className="nav-link" onClick={() => localStorage.removeItem('userRole')}>
+                    <Link to="/paymentslist" className="nav-link" onClick={() => localStorage.removeItem('userRole')}>
                         <FontAwesomeIcon icon={faTh} className="nav-icon" />
                         <p className="menu-item-text">
-                            Payment
+                            Payments List
                             {/* <span className="right badge badge-danger">New</span> */}
                         </p>
                     </Link>

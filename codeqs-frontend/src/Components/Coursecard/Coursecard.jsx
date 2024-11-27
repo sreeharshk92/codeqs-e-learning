@@ -6,6 +6,7 @@ import './CourseCard.css';
 const CourseCard = ({ course }) => {
   const navigate = useNavigate();
 
+  
   const handleCourseDetails = () => {    
     navigate(`/Coursedetails/${course.id}`);
   };
