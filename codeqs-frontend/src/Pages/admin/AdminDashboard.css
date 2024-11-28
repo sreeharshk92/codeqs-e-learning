@@ -1,0 +1,125 @@
+/* AdminDashboard Layout */
+
+.admin-dashboard-container {
+    display: flex;
+    flex-direction: column;
+    /* height: 100vh;  */
+    width: 100%;
+}
+.dashboard-body{
+margin-top: 0px;
+background-color: #f9f9f9;
+}
+.dashboard-header p{
+    font-size: 1.2em;
+    margin-top: 10px;
+    background-color:#f9f9f9;
+}
+
+
+/* Content Area */
+.dashboard-content {
+    margin-left: 250px;
+    margin-top: 100px;
+    padding: 20px;
+    width: calc(100% - 250px);
+    background-color: #f9f9f9;
+}
+
+/* Profile Section */
+
+.profile-info{
+    background-color: white;
+    width: 100%;
+
+}
+.profile-section {
+    display: flex;
+    align-items: center;
+    background-color:white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.admin-details {
+    flex-grow: 1;
+    background-color: white;
+}
+.admin-details h2{
+    margin: 10px 0;
+    background-color: white;
+}
+.admin-btns{
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 10px;
+    background-color: white;
+
+}
+.logout-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+    background-color: #c0392b;
+}
+
+
+/* Course Container */
+.course-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* Basic styling */
+
+
+
+.add-course-btn {
+    background-color: #1abc9c; /* Button background color */
+    color: white;              /* Button text color */
+    border: none;              /* Remove border */
+    border-radius: 5px;       /* Round corners */
+    padding: 10px 20px;       /* Padding inside button */
+    text-decoration: none;
+    cursor: pointer;           /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Transition for hover effect */
+    display: inline-block;     /* Allow margin auto for centering */
+    text-align: center;        /* Center text in button */
+    gap: 10px;
+    margin: 20px 20px 0 0;        /* Center button with margin */
+}
+
+.add-course-btn:hover {
+    background-color: #16a085; /* Darker color on hover */
+}
+
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .dashboard-content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .left-menu {
+        display: none; /* Hide sidebar on mobile */
+    }
+}
