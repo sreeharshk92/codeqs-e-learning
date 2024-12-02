@@ -26,7 +26,7 @@
     width: 50%;
     /* padding-right: 90px; */
 }
-.logo-left p {
+.left-p {
 padding:  10px 0px 15px 0px ;
 font-size: 32px;
 margin:0 10px  ;
@@ -36,7 +36,7 @@ margin:0 10px  ;
     width: 340px;
     padding: 0 10px;
 }
-hr{
+.loginhr{
     margin:  0 70px;
     height: 500px;
 }
@@ -45,7 +45,7 @@ hr{
     /* padding:10px 40px  ; */
     
 }
-.logo-right h1{
+.right-h1{
     font-size: 32px;
     font-weight: 500;
     margin-bottom: 28px;
@@ -155,7 +155,7 @@ hr{
         margin-top: 20px; /* Add space above the image */
     }
 
-    hr {
+    .loginhr {
         display: none; /* Hide the line on smaller screens */
     }
 
@@ -203,7 +203,7 @@ hr{
         text-align: left; /* Align text to the left */
     }
 
-    .logo-left p {
+    .left-p {
         display: none; /* Hide the paragraph text */
     }
 
@@ -228,7 +228,7 @@ hr{
         margin: 8px 0; /* Reduce margin between input fields */
     }
 
-    h1 {
+    .right-h1 {
         font-size: 24px; /* Slightly reduce heading size */
         margin-left: 20px; /* Align more compactly */
     }

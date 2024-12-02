@@ -15,7 +15,7 @@ const Footer = () => {
       <hr className="footer-line" />
       <div className="footer">
         <div className="footer-one">
-          <img src={logo} alt="Logo" className="logoimg" />
+          <img src={logo} alt="Logo" className="logof-img" />
           <p className='fp'>CODE QS is a registered <br /> trademark of CODE QS.co</p>
           <ul className="social-icons">
             <li><AiFillTwitterCircle /></li>

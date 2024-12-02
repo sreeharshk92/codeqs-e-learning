@@ -20,6 +20,11 @@ const Courses = () => {
       </div>
       <div className="filters">
         <button className="filter-btn active">All Courses</button>
+        <button className="filter-btn active">Course Category</button>
+        <button className="filter-btn active">Price Range</button>
+        <button className="filter-btn active">Duration</button>
+        <button className="filter-btn active">Difficult Level</button>
+
         {/* Other filter buttons */}
       </div>
       <div className="crs-card">

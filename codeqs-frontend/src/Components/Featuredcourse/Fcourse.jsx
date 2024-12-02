@@ -42,7 +42,7 @@ const Fcourse = () => {
   return (
     <div className='main-allcourse'>
       <div className="header">
-        <h2 className='hdr-h1'>Featured Courses</h2>
+        <h2 className='fhdr-h2'>Featured Courses</h2>
         <button onClick={handlebtn} className="all-courses-btn">All Courses</button>
       </div>
       {/* <Allcourses /> */}
