@@ -36,7 +36,7 @@ const AllCourses = ({searchTerm}) => {
   return (
     <div>
       <div className="header">
-        <h1 className='hdr-h1'>All Courses</h1>
+        <h2 className='hdr-h2'>All Courses</h2>
       </div>
       <div className='g-arrow'>
         <div className="course-grid">

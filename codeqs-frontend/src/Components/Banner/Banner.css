@@ -1,14 +1,15 @@
-/* Banner.css */
+
 
 /* Full screen (Desktop view) */
 .banner {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 70vh; /* Full height for large screens */
-    padding: 20px;
+    height: 70vh;
+    padding: 10px;
     background-color: #F7F5FA;
-    transition: all 0.3s ease-in-out; /* Smooth transition */
+    /* margin-bottom: 10px; */
+    transition: all 0.3s ease-in-out;  
   }
   
   .bnr-left {
@@ -16,13 +17,13 @@
     margin-left: 40px;
     font-size:1.5rem;
     padding-right: 20px;
-    transition: all 0.3s ease-in-out; /* Smooth transition */
+    transition: all 0.3s ease-in-out;
   }
   
   .bnr-p {
-    font-size: 1.1rem;
+    /* font-size: 1.1rem; */
     color: #5D5A6F;
-    transition: all 0.3s ease-in-out; /* Smooth transition */
+    transition: all 0.3s ease-in-out;
   }
   
   .bnr-right {
@@ -30,13 +31,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 0.3s ease-in-out; /* Smooth transition */
+    transition: all 0.3s ease-in-out;
   }
   
   .bnr-img {
     width: 60%;
     height: auto;
-    transition: all 0.3s ease-in-out; /* Smooth transition */
+    transition: all 0.3s ease-in-out;
   }
   
   .btn1, .btn2 {
@@ -47,7 +48,7 @@
     margin: 10px 0;
     cursor: pointer;
     border-radius: 5px;
-    transition: background-color 0.3s, padding 0.3s ease-in-out; /* Smooth transition for buttons */
+    transition: background-color 0.3s, padding 0.3s ease-in-out; 
   }
   
   .btn1:hover, .btn2:hover {
@@ -56,99 +57,48 @@
   
   .b-h1 {
     margin: 10px 0;
-    transition: all 0.3s ease-in-out; /* Smooth transition */
+    transition: all 0.3s ease-in-out; 
   }
   
-.bnr-p {
-    margin: 10px 0;
-    transition: all 0.3s ease-in-out; /* Smooth transition */
-  }
-  
-  /* Tablet View (768px - 1024px) */
+
   @media (max-width: 1024px) {
     .banner {
-      height: 50vh; /* Slightly reduced height */
+      height: auto; 
     }
-  
     .bnr-left {
-      text-align: left; /* Center-align text on smaller screens */
+      text-align: left; 
       margin-left: 20px;
     }
-  
     .bnr-img {
-      max-width: 100%; /* Reduce image size */
+      max-width: 100%; 
     }
-  
-    .b-h1 {
-      font-size: 1.9rem; /* Adjust heading size */
-    }
-  
     .bnr-p {
-      font-size: 0.9rem;
-    }
-  
-    .btn1, .btn2 {
-      padding: 5px 11px; /* Reduce button size */
-    }
+          font-size: 1.2rem;
+   }
+   .b-h1{
+    font-size: 2rem;
+   }
   }
   
   /* Mobile View (max-width: 768px) */
   @media (max-width: 775px) {
     .banner {
-      flex-direction: row;
+      flex-direction: column;
     }
-  
-    .bnr-left {
-      margin-left: 20px;
-      text-align: left; /* Center text on mobile */
-      padding-bottom: 20px;
-    }
-  
     .bnr-img {
-      width: 80%; /* Smaller image */
+      width: 80%;
+      display: none;
     }
   
-    .b-h1 {
-      margin-left: 1px;
-      font-size: 1.3rem; /* Slightly smaller heading */
-    }
-  
-    .bnr-p {
-      margin-right: 50px;
-      font-size: 0.8rem;
-    }
-  
-    .btn1, .btn2 {
-      padding: 5px 12px; /* Reduce padding */
-      font-size: 0.6rem;
-    }
   }
   
   /* Mobile Small View (max-width: 480px) */
   @media (max-width: 480px) {
     .banner {
-      height: auto; /* Let height adjust naturally */
+      height: auto; 
     }
-    .bnr-left {
-      margin: 0px;
-    }
-
-    .bnr-img {
-      width: 100%; /* Smaller image for mobile */
-    }
-  
-    .bnr-h1 {
-      font-size: 1rem; /* Smaller text for mobile */
-    }
-  
-    .bnr-p {
-      margin-right: 0px;
-
+   .bnr-h1 {
       font-size: 9px;
     }
   
-    .btn1, .btn2 {
-      padding: 6px 9px;
-      font-size: 0.5rem; /* Reduce font size in buttons */
-    }
   }

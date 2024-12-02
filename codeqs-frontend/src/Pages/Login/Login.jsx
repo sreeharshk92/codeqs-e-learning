@@ -76,12 +76,12 @@ const Login = () => {
             <div className="login-form">
                 <div className="logo-left">
                     <img src={logo} alt="" className='logo-img' />
-                    <p>Welcome to <br />CODE QS Online <br />Learning Platform</p>
+                    <p className='left-p'>Welcome to <br />CODE QS Online <br />Learning Platform</p>
                     <img src={login} alt="" className='login-img' />
                 </div>
-                <hr />
+                <hr className='loginhr'/>
                 <div className="logo-right">
-                    <h1>{signState}</h1>
+                    <h1 className='right-h1'>{signState}</h1>
                     <form onSubmit={handleSubmit}>
                         {signState === 'Sign Up' && (
                             <input
