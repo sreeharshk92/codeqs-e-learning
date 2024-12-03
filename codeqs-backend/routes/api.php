@@ -17,6 +17,8 @@ Route::get('/user', function (Request $request) {
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/categories', [CategoryController::class, 'index']);
+Route::post('/add-categories', [CategoryController::class, 'store']);
+
 Route::post('/courses', [CourseController::class, 'save']);
 Route::get('/courses', [CourseController::class, 'list']);
 Route::delete('/courses/{id}', [CourseController::class, 'delete']);

@@ -3,13 +3,14 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './adminCourse.css'; // Ensure this CSS file exists
 import DefaultAdminLayout from './layout/DefaultAdminLayout';
+import axios from 'axios';
 
 const Course = () => {
     const navigate = useNavigate();
     const [categories, setCategories] = useState([]);
     const [learningOutcomes, setLearningOutcomes] = useState(['']);
     const [videos, setVideos] = useState([null]); // Initialize with one empty file input
-
+const [categoryName, setCategoryName] = useState('')
     useEffect(() => {
         const fetchCategories = async () => {
             try {
@@ -82,6 +83,31 @@ const Course = () => {
     const addLearningOutcome = () => setLearningOutcomes([...learningOutcomes, '']);
     const addVideo = () => setVideos([...videos, null]); // Add a null entry for the new file input
 
+
+    const handleAddCategory = async (e) => {
+        e.preventDefault();
+    
+        try {
+            // Make the POST request to add the category
+            const response = await axios.post('http://127.0.0.1:8000/api/add-categories', {
+                name: categoryName,
+            });
+    
+            if (response.status === 201) { // Check if the status code indicates success
+                console.log('Category added successfully:', response.data);
+               
+                // Clear the input field
+                setCategoryName('');
+            } else {
+                console.log('Error adding category:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error saving category:', error);
+        }
+    };
+    
+    
+
     return (
      
         < DefaultAdminLayout>
@@ -110,7 +136,26 @@ const Course = () => {
                                 <option key={category.id} value={category.id}>{category.name}</option>
                             ))}
                         </select>
-                    </div>
+
+    <button type="submit" onClick={handleAddCategory} className="btn btn-secondary">Add Category</button>
+
+        <input
+            type="text"
+            name='categoryName'
+            className="form-control"
+            value={categoryName}
+            placeholder="Enter new category"
+            onChange={(e)=>setCategoryName(e.target.value)}
+            required
+        />
+
+                     </div>
+
+                   
+    
+
+
+
                     <div className="form-group">
                         <label>Status</label>
                         <div className="radio-group">

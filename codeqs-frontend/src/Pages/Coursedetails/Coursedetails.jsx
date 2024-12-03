@@ -24,7 +24,7 @@ const Coursedetails = () => {
           throw new Error('Failed to fetch course details');
         }
         const data = await response.json();
-        setCourseData(data.course || data.data.course); // Adjust based on API response structure
+        setCourseData(data.course || data.data.course); 
       } catch (error) {
         setError(error.message);
         setAmount(courseData.price)
@@ -83,7 +83,7 @@ const Coursedetails = () => {
 
       
     const formattedPhone = userPaymentInfo.phone.replace(/\D/g, '');
-    console.log('Formatted phone:', formattedPhone); // Log the formatted phone number
+    console.log('Formatted phone:', formattedPhone); 
 
     const amount = Math.round(courseData.price);
 
@@ -171,10 +171,10 @@ const Coursedetails = () => {
 
           <div className="course-details-content">
             <h2  className="course-details-content-h2">{courseData.name}</h2>
-            <p><strong>Description:</strong> {courseData.description}</p>
+            <p><strong>Description:</strong><span className="course-description">{courseData.description}</span></p>
             <p><strong>Mentor:</strong> {courseData.mentor || 'N/A'}</p>
             <p><strong>Price:</strong> ₹{courseData.price.toFixed(2)}</p>
-            <p><strong>Rating:</strong> {courseData.rating ? courseData.rating.toFixed(1) : 'N/A'}</p>
+            <p><strong>Rating:</strong> {courseData.rating ? courseData.rating.toFixed(1) : 'N/A'}⭐ / 5⭐</p>
             <p><strong>Total Hours:</strong> {courseData.total_hours || 'N/A'}</p>
             <p><strong>Certificate:</strong> {courseData.certificates || 'N/A'}</p>
             <h3>Learning Outcomes</h3>
@@ -193,7 +193,7 @@ const Coursedetails = () => {
         </div>
       </div>
 
-      {isFormVisible && <UserInfoForm onSubmit={handleFormSubmit} />}
+      {/* {isFormVisible && <UserInfoForm onSubmit={handleFormSubmit} />} */}
       <Footer />
     </>
   );
