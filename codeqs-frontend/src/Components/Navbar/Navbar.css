@@ -13,22 +13,28 @@
     justify-content: space-between;
     align-items: center;
     background-color: #F7F5FA ;
-    padding: 1rem 3rem;
+    padding: 1rem 2rem;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
     position: relative;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
   }
-  .logo-img{
-    width: 120px;
-    margin: -30px;
+  .logonav-img{
+    width: 70px;
+    font-size: small;
+    /* margin: -30px; */
    
+  }
+  .logoimg{
+    width: 120px;
+    height: auto;
+    display: none;
   }
   
   .search-bar {
     position: relative;
     flex-grow: 1;
     /* margin-right: 2rem; */
-    margin-left: 3rem;
+    margin-left: 2rem;
   }
 
  
@@ -98,18 +104,30 @@
     .search-bar input {
       width: 30rem;
     }
+    .logonav-img{
+      display: none;
+    }
+    .logoimg{
+      display: block;
+    }
   }
   
   @media (max-width: 1124px) {
     .search-bar {
       display: none;
     }
-  
+    .logonav-img{
+      display: none;
+    }
+    .logoimg{
+      display: block;
+    }
     .mob-search-bar {
       display: flex;
       position: relative;
       margin-top: 1rem;
       width: 90%;
+      height: 50px;
       max-width: 25rem;
     }
   

@@ -2,7 +2,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import './Navbar.css';
 import { CiSearch } from "react-icons/ci";
-import logo from '../../assets/codeqslogo.png';
+import navnew from '../../assets/navnew.png';
+import logo from '../../assets/logo.png';
 
 const Navbar = ({ onSearch }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -48,7 +49,9 @@ const Navbar = ({ onSearch }) => {
   return (
     <header className="navbar">
       <div>
-        {/* <img src={logo} alt="Logo" className='logo-img' /> */}
+        <img src={navnew} alt="Logo" className='logonav-img' />
+        <img src={logo} alt="Logo" className="logoimg" />
+
       </div>
       <div className="search-bar">
         <input type="text" onFocus={handleSearch}  onChange={handleSearchChange} value={searchTerm} placeholder="Find your next skill to master..." />

@@ -11,19 +11,5 @@
     margin: 15px;
   }
   
-  /* Responsive styling for tablet */
-  @media (max-width: 768px) {
-    .countdown-p{
-      font-size: 15px;
-    }
-  }
-  
-  /* Responsive styling for mobile */
-  @media (max-width: 480px) {
-    .countdown-p{
-      font-size: 15px;
-      margin: 5px;
-    }
-   
-  }
+ 
   
