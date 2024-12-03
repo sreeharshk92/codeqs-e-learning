@@ -32,7 +32,7 @@ const Login = () => {
             });
             const data = await response.json();
 
-            console.log("API response:", data); // Debug: Log the entire API response
+            console.log("API response:", data);
 
             if (response.ok) {
                 console.log("Login successful for:", data.user.name);
@@ -52,10 +52,8 @@ const Login = () => {
                     localStorage.setItem('token', data.token); // Store token if available
                 }
 
-                // Navigate based on role
-                if (userRole === 'admin') {
-                    navigate('/admin-dashboard');
-                } else {
+                // Redirect to homepage (if user is not an admin)
+                if (userRole !== 'admin') {
                     navigate('/');
                 }
             } else {
@@ -65,14 +63,14 @@ const Login = () => {
             setError('Something went wrong. Please try again.');
         }
     };
-    const handlehome= () => {
-        navigate('/'); 
-      }
-    
+
+    const handlehome = () => {
+        navigate('/');
+    };
 
     return (
         <div className='login' style={{ display: 'inline' }}>
-         <FaArrowLeft onClick={handlehome} style={{fontSize:'30px', paddingLeft:'10px',marginTop:'10px'}}/>
+            <FaArrowLeft onClick={handlehome} style={{ fontSize: '30px', paddingLeft: '10px', marginTop: '10px' }} />
             <div className="login-form">
                 <div className="logo-left">
                     <img src={logo} alt="" className='logo-img' />

@@ -91,11 +91,11 @@ public function verifyPayment(Request $request)
                 'name' => $validated['name'],
                 'email' => $validated['email'],
                 'phone' => $validated['phone'],
-                'course_name' => $validated['course_name'],
+                'course_name' => $validated['course_name'],                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 
-            ]);
+            ]);                                                                                                                                                                                                                                                                                                 
             
-            // Send email after payment is verified
+            // Send email after payment is verified                                                                                                                                         
             $message = "Hello {$validated['name']},\n\nYour payment of ₹{$validated['amount']} for the course '{$validated['course_name']}' was successful. Thank you for your purchase!\n\nOrder ID: {$validated['razorpay_order_id']}\n\nRegards,\nCODEQS Team";
             $subject = "Payment Successful - CODEQS";
 
