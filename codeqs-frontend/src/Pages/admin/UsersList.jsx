@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DefaultAdminLayout from './layout/DefaultAdminLayout';
-import './Userslist.css';
+import './UsersList.css';
 
 const UsersList = () => {
     const [users, setUsers] = useState([]);

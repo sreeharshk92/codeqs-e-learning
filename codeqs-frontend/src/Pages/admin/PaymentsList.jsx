@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DefaultAdminLayout from './layout/DefaultAdminLayout';
-import './Paymentslist.css';
+import './PaymentsList.css';
 
 const PaymentsList = () => {
     const [payments, setPayments] = useState([]);

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import CountdownTimer from '../CountdownTimer/CountdownTimer';
-import './CourseCard.css';
+import './Coursecard.css';
 
 const CourseCard = ({ course }) => {
   const navigate = useNavigate();
