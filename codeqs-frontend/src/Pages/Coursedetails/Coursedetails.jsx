@@ -142,7 +142,7 @@ const Coursedetails = () => {
           color: "#F37254"
         }
       };
-  
+      
       const razorpay = new window.Razorpay(options);
       razorpay.open();
     } catch (error) {
