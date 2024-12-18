@@ -10,7 +10,7 @@ const PaymentsList = () => {
     useEffect(() => {
         const fetchPayments = async () => {
             try {
-                const response = await fetch('http://localhost:8000/api/payments-list');
+                const response = await fetch('https://codeqs.ddns.net/api/payments-list');
                 if (!response.ok) {
                     throw new Error('Failed to fetch users');
                 }

@@ -19,7 +19,7 @@ const Coursedetails = () => {
   useEffect(() => {
     const fetchCourseDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/api/courses/${courseId}`);
+        const response = await fetch(`https://codeqs.ddns.net/api/courses/${courseId}`);
         if (!response.ok) {
           throw new Error('Failed to fetch course details');
         }
@@ -69,7 +69,7 @@ const Coursedetails = () => {
   if (error) return <p>Error: {error}</p>;
   if (!courseData || Object.keys(courseData).length === 0) return <p>No course data found</p>;
 
-  const videoURL = `http://localhost:8000/storage/videos/${courseData.videos[0]}`;
+  const videoURL = `https://codeqs.ddns.net/storage/videos/${courseData.videos[0]}`;
 
 
   /////// Payment function starts here //////////////
@@ -88,7 +88,7 @@ const Coursedetails = () => {
     const amount = Math.round(courseData.price);
 
   
-      const response = await axios.post("http://127.0.0.1:8000/api/create-order", {
+      const response = await axios.post("https://codeqs.ddns.net/api/create-order", {
         amount: amount,
         name: userPaymentInfo.name,
         email: userPaymentInfo.email,
@@ -110,7 +110,7 @@ const Coursedetails = () => {
         order_id: order_id,
         handler: async function (response) {
           try {
-            const verificationResponse = await axios.post("http://127.0.0.1:8000/api/verify-payment", {
+            const verificationResponse = await axios.post("https://codeqs.ddns.net/api/verify-payment", {
               razorpay_order_id: response.razorpay_order_id,
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_signature: response.razorpay_signature,
@@ -193,7 +193,7 @@ const Coursedetails = () => {
         </div>
       </div>
 
-      {/* {isFormVisible && <UserInfoForm onSubmit={handleFormSubmit} />} */}
+      {isFormVisible && <UserInfoForm onSubmit={handleFormSubmit} />}
       <Footer />
     </>
   );

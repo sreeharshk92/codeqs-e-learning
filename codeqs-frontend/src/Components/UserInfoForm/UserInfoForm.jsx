@@ -24,7 +24,7 @@ const UserInfoForm = ({ onSubmit }) => {
         setIsLoading(true);
 
         try {
-            const response = await fetch('http://localhost:8000/api/personal', {
+            const response = await fetch('https://codeqs.ddns.net/api/personal', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

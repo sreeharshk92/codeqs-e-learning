@@ -20,9 +20,13 @@ class HandleCors
         $response = $next($request);
 
         // Add CORS headers
-        $response->headers->set('Access-Control-Allow-Origin', 'http://localhost:5173'); // Change this to your frontend URL
+        $response->headers->set('Access-Control-Allow-Origin', 'http://codeqs.ddns.net'); 
         $response->headers->set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
         $response->headers->set('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
+
+ if ($request->getMethod() === 'OPTIONS') {
+        return response()->json('OK', 200);
+    }
 
         return $response;
     }

@@ -10,7 +10,7 @@ const UsersList = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await fetch('http://localhost:8000/api/show');
+                const response = await fetch('https://codeqs.ddns.net/api/show');
                 if (!response.ok) {
                     throw new Error('Failed to fetch users');
                 }

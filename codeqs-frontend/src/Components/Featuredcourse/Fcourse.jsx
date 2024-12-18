@@ -20,7 +20,7 @@ const Fcourse = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/courses');
+        const response = await fetch('https://codeqs.ddns.net/api/courses');
         if (!response.ok) {
           throw new Error('Failed to fetch courses');
         }

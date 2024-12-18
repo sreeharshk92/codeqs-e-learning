@@ -1,17 +1,17 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home/Home';
-import Courses from './pages/Courses/Courses';
-import Login from './pages/Login/Login';
-import Coursedetails from './pages/Coursedetails/Coursedetails';
-import Pagenotfound from './pages/Pagenotfound/Pagenotfound';
-import CourseList from './pages/admin/CourseList';
-import Course from './pages/admin/adminCourse';
-import AdminDashboard from './pages/admin/AdminDashboard';
-import UsersList from './pages/admin/UsersList';
+import Home from './Pages/Home/Home';
+import Courses from './Pages/Courses/Courses';
+import Login from './Pages/Login/Login';
+import Coursedetails from './Pages/Coursedetails/Coursedetails';
+import Pagenotfound from './Pages/Pagenotfound/Pagenotfound';
+import CourseList from './Pages/admin/CourseList';
+import Course from './Pages/admin/adminCourse';
+import AdminDashboard from './Pages/admin/AdminDashboard';
+import UsersList from './Pages/admin/UsersList';
 import PrivateRoute from './Components/PrivateRoute';
-import EditCourse from './pages/admin/EditCourse';
-import PaymentsList from './pages/admin/PaymentsList';
-import AdminLogin from './pages/admin/AdminLogin';
+import EditCourse from './Pages/admin/EditCourse';
+import PaymentsList from './Pages/admin/PaymentsList';
+import AdminLogin from './Pages/admin/AdminLogin';
 import AdminPrivateRoute from './Components/AdminPrivateRoute';
 
 const App = () => {

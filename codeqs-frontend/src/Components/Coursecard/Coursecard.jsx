@@ -13,7 +13,7 @@ const CourseCard = ({ course }) => {
 
   return (
     <div className="course-card">
-      <img src={`http://localhost:8000/storage/images/${course.image}`} alt={course.name} className="course-cover-pic" />
+      <img src={`https://codeqs.ddns.net/storage/images/${course.image}`} alt={course.name} className="course-cover-pic" />
       <div className="course-content">
         <h2 className="course-title">{course.name}</h2>
         <p className="ps">{course.short_description}</p>

@@ -12,7 +12,7 @@ const CourseList = () => {
     useEffect(() => {
         const fetchCourses = async () => {
             try {
-                const response = await fetch('http://localhost:8000/api/courses');
+                const response = await fetch('https://codeqs.ddns.net/api/courses');
                 if (!response.ok) {
                     throw new Error('Failed to fetch courses');
                 }
@@ -31,7 +31,7 @@ const CourseList = () => {
     const handleDelete = async (id) => {
         if (window.confirm('Are you sure you want to delete this course?')) {
             try {
-                const response = await fetch(`http://localhost:8000/api/courses/${id}`, {
+                const response = await fetch(`https://codeqs.ddns.net/api/courses/${id}`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',
@@ -95,7 +95,7 @@ const CourseList = () => {
                                     <td>
                                         {course.image ? (
                                             <img 
-                                                src={`http://localhost:8000/storage/images/${course.image}`} 
+                                                src={`https://codeqs.ddns.net/storage/images/${course.image}`} 
                                                 width="100" 
                                                 alt={course.name} 
                                                 onError={(e) => { e.target.onerror = null; e.target.src="default-image.png"; }}
@@ -121,7 +121,7 @@ const CourseList = () => {
                                             parsedVideos.map((video, videoIndex) => (
                                                 <div key={videoIndex}>
                                                     <video controls width="100" onError={(e) => e.target.style.display = 'none'}>
-                                                        <source src={`http://localhost:8000/storage/videos/${video}`} type="video/mp4" />
+                                                        <source src={`https://codeqs.ddns.net/storage/videos/${video}`} type="video/mp4" />
                                                         <p>Your browser does not support the video tag.</p>
                                                     </video>
                                                 </div>

@@ -135,7 +135,7 @@ const [categoryName, setCategoryName] = useState('')
                     </div>
                     <div className="form-group">
                         <label>Category</label>
-                        <select name="category_id" className="form-control" >
+                        <select name="category_id" className="form-control" required>
                             <option value="">Select a category</option>
                             {categories.map(category => (
                                 <option key={category.id} value={category.id}>{category.name}</option>
@@ -156,11 +156,15 @@ const [categoryName, setCategoryName] = useState('')
 
                      </div>
 
-                  
+                   
+    
+
+
+
                     <div className="form-group">
                         <label>Status</label>
                         <div className="radio-group">
-                            <label><input type="radio" value="1" name="status" required  /> Active</label>
+                            <label><input type="radio" value="1" name="status" required /> Active</label>
                             <label><input type="radio" value="0" name="status" required /> Inactive</label>
                         </div>
                     </div>
@@ -227,7 +231,7 @@ const [categoryName, setCategoryName] = useState('')
                                 className="form-control-file"
                                 onChange={(e) => handleVideoChange(index, e.target.files[0])} // Get the file
                                 placeholder={`Upload Video ${index + 1}`}
-                              required
+                                required
                             />
                         ))}
                         <button type="button" onClick={addVideo} className="btn btn-secondary mt-2">Add Video</button>
