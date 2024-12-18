@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import CourseCard from '../Coursecard/Coursecard';
 import './Allcourses.css';
+import baseUrl from '../../config/baseUrl';
 
 const AllCourses = ({searchTerm}) => {
   const [courses, setCourses] = useState([]);
@@ -10,7 +11,8 @@ const AllCourses = ({searchTerm}) => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await fetch('https://codeqs.ddns.net/api/courses');
+        const response = await fetch(`${baseUrl}/api/courses`);
+
         if (!response.ok) {
           throw new Error('Failed to fetch courses');
         }

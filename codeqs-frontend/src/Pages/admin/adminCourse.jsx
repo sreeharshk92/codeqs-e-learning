@@ -4,6 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import './adminCourse.css'; // Ensure this CSS file exists
 import DefaultAdminLayout from './layout/DefaultAdminLayout';
 
+
+import baseUrl from '../../config/baseUrl';
+
+
 const Course = () => {
     const navigate = useNavigate();
     const [categories, setCategories] = useState([]);
@@ -13,7 +17,9 @@ const [categoryName, setCategoryName] = useState('')
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await fetch('https://codeqs.ddns.net/api/categories');
+
+                const response = await fetch(`${baseUrl}/api/categories`);
+
                 if (!response.ok) {
                     throw new Error(`Error: ${response.status}`);
                 }
@@ -47,7 +53,9 @@ const [categoryName, setCategoryName] = useState('')
 }
 
         try {
-            const response = await fetch('https://codeqs.ddns.net/api/courses', {
+
+            const response = await fetch(`${baseUrl}/api/courses`, {
+
                 method: 'POST',
                 body: formData,
                 headers: {
@@ -56,6 +64,7 @@ const [categoryName, setCategoryName] = useState('')
             });
 
             const data = await response.json();
+            
             if (data.error) {
                 console.error('Error adding course:', data.error);
             } else {
@@ -84,32 +93,38 @@ const [categoryName, setCategoryName] = useState('')
 
 
     const handleAddCategory = async (e) => {
+
     e.preventDefault();
+    
+        try {
+            // Make the POST request to add the category
+            const response = await fetch(`${baseUrl}/api/add-categories`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name: categoryName }),
+            });
+    
+            if (response.ok) { // Check if the response is successful (status code 200-299)
+                const data = await response.json();
+                console.log('Category added successfully:', data);
+    
+                // Clear the input field
+                setCategoryName('');
+            } else {
+                console.log('Error adding category:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error saving category:', error);
 
-    try {
-        // Make the POST request to add the category
-        const response = await fetch('https://codeqs.ddns.net/api/add-categories', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ name: categoryName }),
-        });
-
-        if (response.ok) { // Check if the response is successful (status code 200-299)
-            const data = await response.json();
-            console.log('Category added successfully:', data);
-
-            // Clear the input field
-            setCategoryName('');
-        } else {
-            console.log('Error adding category:', response.statusText);
         }
     } catch (error) {
         console.error('Error saving category:', error);
     }
 };
 
+    
     
     
 
@@ -135,7 +150,9 @@ const [categoryName, setCategoryName] = useState('')
                     </div>
                     <div className="form-group">
                         <label>Category</label>
-                        <select name="category_id" className="form-control" >
+
+                        <select name="category_id" className="form-control">
+
                             <option value="">Select a category</option>
                             {categories.map(category => (
                                 <option key={category.id} value={category.id}>{category.name}</option>
@@ -151,8 +168,8 @@ const [categoryName, setCategoryName] = useState('')
             value={categoryName}
             placeholder="Enter new category"
             onChange={(e)=>setCategoryName(e.target.value)}
-      
-        />
+
+/>
 
                      </div>
 

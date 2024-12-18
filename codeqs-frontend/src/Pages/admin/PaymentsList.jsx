@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DefaultAdminLayout from './layout/DefaultAdminLayout';
 import './PaymentsList.css';
+import baseUrl from '../../config/baseUrl';
 
 const PaymentsList = () => {
     const [payments, setPayments] = useState([]);
@@ -10,7 +11,9 @@ const PaymentsList = () => {
     useEffect(() => {
         const fetchPayments = async () => {
             try {
-                const response = await fetch('https://codeqs.ddns.net/api/payments-list');
+
+                const response = await fetch(`${baseUrl}/api/payments-list`);
+
                 if (!response.ok) {
                     throw new Error('Failed to fetch users');
                 }
@@ -32,6 +35,8 @@ const PaymentsList = () => {
                 <div className="user-dashboard-body">
                     <div className="user-dashboard-content">
                         <h2>Welcome to your Payments dashboard!</h2>
+
+
 
                         {loading && <p>Loading...</p>}
                         {error && <p style={{ color: 'red' }}>{error}</p>}

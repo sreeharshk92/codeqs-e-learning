@@ -1,10 +1,18 @@
+<<<<<<< HEAD
 <IfModule mod_rewrite.c>
+=======
+<!-- <IfModule mod_rewrite.c>
+>>>>>>> 97a8aae8974c1d004a72adf9fa42a527b00ddad9
     RewriteEngine On
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^ index.php [L]
+<<<<<<< HEAD
 </IfModule>
 
 php_value upload_max_filesize 100M
 php_value post_max_size 100M
 php_value memory_limit 256M
+=======
+</IfModule> -->
+>>>>>>> 97a8aae8974c1d004a72adf9fa42a527b00ddad9

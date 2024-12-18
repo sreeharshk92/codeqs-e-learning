@@ -4,6 +4,7 @@ import CourseCard from '../Coursecard/Coursecard';
 import { useNavigate } from 'react-router-dom';
 // import Allcourses from '../Allcourses/Allcourses';
 import '../Allcourses/Allcourses.css';
+import baseUrl from '../../config/baseUrl';
 
 const Fcourse = () => {
   const navigate = useNavigate();
@@ -20,7 +21,9 @@ const Fcourse = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await fetch('https://codeqs.ddns.net/api/courses');
+
+        const response = await fetch(`${baseUrl}/api/courses`);
+
         if (!response.ok) {
           throw new Error('Failed to fetch courses');
         }

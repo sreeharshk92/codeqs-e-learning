@@ -14,6 +14,7 @@ class CourseController extends Controller
 {
     public function save(CourseSaveRequest $request)
     {
+        
         try {
             $validated = $request->validated();
 
@@ -53,10 +54,11 @@ class CourseController extends Controller
     {
         try {
             $course = Course::findOrFail($id);
-            if ($course->image) Storage::delete('images/' . $course->image);
+            if ($course->image) Storage::delete('images/'.$course->image);
+
             if ($course->videos) {
                 foreach (json_decode($course->videos, true) as $video) {
-                    Storage::delete('videos/' . $video);
+                    Storage::delete('videos/'.$video);
                 }
             }
             $course->delete();
@@ -65,6 +67,7 @@ class CourseController extends Controller
             return response()->json(['error' => 'Failed to delete course'], 500);
         }
     }
+
 
     public function show($id)
     {
@@ -89,17 +92,17 @@ class CourseController extends Controller
 
             // Handle image upload
             if ($request->hasFile('image')) {
-                if ($course->image) Storage::delete('images/' . $course->image);
+                if ($course->image)Storage::delete('images/'.$course->image);
+
                 $filename = Str::random(6) . '-' . time() . '_course.' . $request->image->extension();
                 $request->image->storeAs('images', $filename);
-                $validated['image'] = $filename;
+                $validated['image'] =  $filename;
             }
 
             // Handle videos upload
             if ($request->hasFile('videos')) {
                 if ($course->videos) {
                     foreach (json_decode($course->videos, true) as $video) {
-                        Storage::delete('videos/' . $video);
                     }
                 }
                 $videoPaths = [];
