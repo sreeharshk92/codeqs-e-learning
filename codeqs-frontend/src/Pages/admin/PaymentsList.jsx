@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DefaultAdminLayout from './layout/DefaultAdminLayout';
 import './PaymentsList.css';
+import baseUrl from '../../config/baseUrl';
 
 const PaymentsList = () => {
     const [payments, setPayments] = useState([]);
@@ -10,7 +11,7 @@ const PaymentsList = () => {
     useEffect(() => {
         const fetchPayments = async () => {
             try {
-                const response = await fetch('http://localhost:8000/api/payments-list');
+                const response = await fetch(`${baseUrl}/api/payments-list`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch users');
                 }

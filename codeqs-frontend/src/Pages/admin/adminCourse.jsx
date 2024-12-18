@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './adminCourse.css'; // Ensure this CSS file exists
 import DefaultAdminLayout from './layout/DefaultAdminLayout';
-import axios from 'axios';
+import baseUrl from '../../config/baseUrl';
 
 const Course = () => {
     const navigate = useNavigate();
@@ -14,7 +14,7 @@ const [categoryName, setCategoryName] = useState('')
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await fetch('http://localhost:8000/api/categories');
+                const response = await fetch(`${baseUrl}/api/categories`);
                 if (!response.ok) {
                     throw new Error(`Error: ${response.status}`);
                 }
@@ -48,7 +48,7 @@ const [categoryName, setCategoryName] = useState('')
 }
 
         try {
-            const response = await fetch('http://localhost:8000/api/courses', {
+            const response = await fetch(`${baseUrl}/api/courses`, {
                 method: 'POST',
                 body: formData,
                 headers: {
@@ -57,6 +57,7 @@ const [categoryName, setCategoryName] = useState('')
             });
 
             const data = await response.json();
+            
             if (data.error) {
                 console.error('Error adding course:', data.error);
             } else {
@@ -89,13 +90,18 @@ const [categoryName, setCategoryName] = useState('')
     
         try {
             // Make the POST request to add the category
-            const response = await axios.post('http://127.0.0.1:8000/api/add-categories', {
-                name: categoryName,
+            const response = await fetch(`${baseUrl}/api/add-categories`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name: categoryName }),
             });
     
-            if (response.status === 201) { // Check if the status code indicates success
-                console.log('Category added successfully:', response.data);
-               
+            if (response.ok) { // Check if the response is successful (status code 200-299)
+                const data = await response.json();
+                console.log('Category added successfully:', data);
+    
                 // Clear the input field
                 setCategoryName('');
             } else {
@@ -105,6 +111,7 @@ const [categoryName, setCategoryName] = useState('')
             console.error('Error saving category:', error);
         }
     };
+    
     
     
 
@@ -130,7 +137,7 @@ const [categoryName, setCategoryName] = useState('')
                     </div>
                     <div className="form-group">
                         <label>Category</label>
-                        <select name="category_id" className="form-control" required>
+                        <select name="category_id" className="form-control">
                             <option value="">Select a category</option>
                             {categories.map(category => (
                                 <option key={category.id} value={category.id}>{category.name}</option>
@@ -146,7 +153,7 @@ const [categoryName, setCategoryName] = useState('')
             value={categoryName}
             placeholder="Enter new category"
             onChange={(e)=>setCategoryName(e.target.value)}
-            required
+        
         />
 
                      </div>

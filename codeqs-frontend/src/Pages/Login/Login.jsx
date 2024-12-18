@@ -4,6 +4,7 @@ import logo from '../../assets/logo.png';
 import login from '../../assets/login.png';
 import { useNavigate } from 'react-router-dom';
 import { FaArrowLeft } from "react-icons/fa";
+import baseUrl from '../../config/baseUrl';
 
 const Login = () => {
     const [signState, setSignState] = useState('Sign In');
@@ -16,7 +17,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
-        const url = signState === 'Sign In' ? 'http://localhost:8000/api/login' : 'http://localhost:8000/api/register';
+        const url = signState === 'Sign In' ? `${baseUrl}/api/login` : `${baseUrl}/api/register`;
         
         const body = signState === 'Sign In'
             ? { email, password }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DefaultAdminLayout from './layout/DefaultAdminLayout';
 import './UsersList.css';
+import baseUrl from '../../config/baseUrl';
 
 const UsersList = () => {
     const [users, setUsers] = useState([]);
@@ -10,7 +11,7 @@ const UsersList = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await fetch('http://localhost:8000/api/show');
+                const response = await fetch(`${baseUrl}/api/show`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch users');
                 }

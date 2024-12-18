@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './UserInfoForm.css'; // Make sure this CSS file exists
+import baseUrl from '../../config/baseUrl';
 
 const UserInfoForm = ({ onSubmit }) => {
     const [formData, setFormData] = useState({
@@ -24,7 +25,7 @@ const UserInfoForm = ({ onSubmit }) => {
         setIsLoading(true);
 
         try {
-            const response = await fetch('http://localhost:8000/api/personal', {
+            const response = await fetch(`${baseUrl}/api/personal`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

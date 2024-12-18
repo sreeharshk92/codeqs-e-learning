@@ -33,8 +33,8 @@ const EditCourse = () => {
         const fetchData = async () => {
             try {
                 const [categoriesResponse, courseResponse] = await Promise.all([
-                    fetch('http://localhost:8000/api/categories'),
-                    fetch(`http://localhost:8000/api/courses/${id}`)
+                    fetch(`${baseUrl}/api/categories`),
+                    fetch(`${baseUrl}/api/courses/${id}`)
                 ]);
 
                 if (!categoriesResponse.ok) throw new Error('Failed to fetch categories');
@@ -180,7 +180,7 @@ const EditCourse = () => {
                 }
             });
 
-            const response = await fetch(`http://localhost:8000/api/courses/${id}`, {
+            const response = await fetch(`${baseUrl}/api/courses/${id}`, {
                 method: 'POST',
                 body: formDataToSend,
                 headers: {
@@ -284,7 +284,7 @@ const EditCourse = () => {
                         {course.image && (
                             <div className="current-image">
                                 <img
-                                    src={`http://localhost:8000/storage/images/${course.image}`}
+                                    src={`${baseUrl}/storage/images/${course.image}`}
                                     alt={course.name}
                                     className="preview-image"
                                 />
@@ -422,7 +422,7 @@ const EditCourse = () => {
                                     />
                                     {typeof video === 'string' && (
                                         <video controls className="video-preview">
-                                            <source src={`http://localhost:8000/storage/videos/${video}`} type="video/mp4" />
+                                            <source src={`${baseUrl}/storage/videos/${video}`} type="video/mp4" />
                                             Your browser does not support the video tag.
                                         </video>
                                     )}

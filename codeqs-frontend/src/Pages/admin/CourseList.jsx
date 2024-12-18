@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './CourseList.css';
 import Master from './layout/Master';
+import baseUrl from '../../config/baseUrl';
 
 const CourseList = () => {
     const [courses, setCourses] = useState([]);
@@ -12,7 +13,7 @@ const CourseList = () => {
     useEffect(() => {
         const fetchCourses = async () => {
             try {
-                const response = await fetch('http://localhost:8000/api/courses');
+                const response = await fetch(`${baseUrl}/api/courses`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch courses');
                 }
@@ -31,7 +32,7 @@ const CourseList = () => {
     const handleDelete = async (id) => {
         if (window.confirm('Are you sure you want to delete this course?')) {
             try {
-                const response = await fetch(`http://localhost:8000/api/courses/${id}`, {
+                const response = await fetch(`${baseUrl}/api/courses/${id}`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',
