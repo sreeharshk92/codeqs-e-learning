@@ -20,16 +20,16 @@ class CourseController extends Controller
 
             if ($request->hasFile('image')) {
                 $filename = Str::random(6) . '-' . time() . '_course.' . $request->image->extension();
-                $path = $request->image->storeAs('images', $filename);
-                $validated['image'] = Storage::disk('s3')->url($path);
+                $request->image->storeAs('images', $filename);
+                $validated['image'] = $filename;
             }
 
             if ($request->hasFile('videos')) {
                 $videoPaths = [];
                 foreach ($request->file('videos') as $video) {
                     $videoName = Str::random(6) . '-' . time() . '_video.' . $video->extension();
-                    $path = $video->storeAs('videos', $videoName);
-                    $videoPaths[] = Storage::disk('s3')->url($path);
+                    $video->storeAs('videos', $videoName);
+                    $videoPaths[] = $videoName;
                 }
                 $validated['videos'] = json_encode($videoPaths);
             }
@@ -54,12 +54,11 @@ class CourseController extends Controller
     {
         try {
             $course = Course::findOrFail($id);
-            if ($course->image) {
-
-            }
+            if ($course->image) Storage::delete('images/'.$course->image);
 
             if ($course->videos) {
                 foreach (json_decode($course->videos, true) as $video) {
+                    Storage::delete('videos/'.$video);
                 }
             }
             $course->delete();
@@ -93,14 +92,11 @@ class CourseController extends Controller
 
             // Handle image upload
             if ($request->hasFile('image')) {
-                if ($course->image) 
-                {
-                    
-                }
+                if ($course->image)Storage::delete('images/'.$course->image);
 
                 $filename = Str::random(6) . '-' . time() . '_course.' . $request->image->extension();
-                $path =$request->image->storeAs('images', $filename);
-                $validated['image'] =  Storage::disk('s3')->url($path);
+                $request->image->storeAs('images', $filename);
+                $validated['image'] =  $filename;
             }
 
             // Handle videos upload
@@ -112,8 +108,8 @@ class CourseController extends Controller
                 $videoPaths = [];
                 foreach ($request->file('videos') as $video) {
                     $videoName = Str::random(6) . '-' . time() . '_video.' . $video->extension();
-                   $path = $video->storeAs('videos', $videoName);
-                    $videoPaths[] = Storage::disk('s3')->url($path);
+                    $video->storeAs('videos', $videoName);
+                    $videoPaths[] = $videoName;
                 }
                 $validated['videos'] = json_encode($videoPaths);
             }
