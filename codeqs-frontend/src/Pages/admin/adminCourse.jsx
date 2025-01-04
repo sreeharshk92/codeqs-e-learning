@@ -119,9 +119,7 @@ const [categoryName, setCategoryName] = useState('')
             console.error('Error saving category:', error);
 
         }
-    } catch (error) {
-        console.error('Error saving category:', error);
-    }
+   
 };
 
     

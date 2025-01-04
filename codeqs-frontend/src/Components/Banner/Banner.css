@@ -15,7 +15,7 @@
   .bnr-left {
     flex: 1;
     margin-left: 40px;
-    font-size:1.5rem;
+    font-size:1.2rem;
     padding-right: 20px;
     transition: all 0.3s ease-in-out;
   }
@@ -57,6 +57,7 @@
   
   .b-h1 {
     margin: 10px 0;
+
     transition: all 0.3s ease-in-out; 
   }
   
