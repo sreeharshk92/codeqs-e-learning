@@ -24,8 +24,6 @@ const Courses = () => {
         <button className="filter-btn active">Price Range</button>
         <button className="filter-btn active">Duration</button>
         <button className="filter-btn active">Difficult Level</button>
-
-        {/* Other filter buttons */}
       </div>
       <div className="crs-card">
         <Allcourses searchTerm={searchTerm} />

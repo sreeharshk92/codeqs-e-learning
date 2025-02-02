@@ -13,6 +13,7 @@ import EditCourse from './Pages/admin/EditCourse';
 import PaymentsList from './Pages/admin/PaymentsList';
 import AdminLogin from './Pages/admin/AdminLogin';
 import AdminPrivateRoute from './Components/AdminPrivateRoute';
+import Workshop from './Pages/workshop/Workshop';
 
 const App = () => {
     return (
@@ -25,6 +26,7 @@ const App = () => {
                 {/* Protected User Routes */}
                 <Route element={<PrivateRoute />}>
                     <Route path="/courses" element={<Courses />} />
+                    <Route path="/workshop" element={<Workshop />} />
                     <Route path="/coursedetails/:courseId" element={<Coursedetails />} />
                 </Route>
 

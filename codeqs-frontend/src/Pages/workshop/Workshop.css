@@ -1,0 +1,121 @@
+.crs-bnr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #EFEBF5;
+  margin: 30px 56px;
+  border-radius: 15px;
+}
+.workshop-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px; 
+}
+.filter-container {
+  width: 250px;
+  padding: 45px;
+  left: 3px;
+  background-color: #fefdfa;
+  border-radius: 10px;
+  font-family: Arial, sans-serif;
+  position: sticky;
+  top: 20px; 
+  height: fit-content;
+}
+.hfour{
+  color:  #333;
+  margin-bottom: 15px;
+}
+.filter-section {
+  margin-bottom: 20px;
+}
+.filter-section ul {
+  list-style: none;
+  padding: 0;
+}
+.filter-section li {
+  margin: 8px 0;
+}
+ label {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #7a7c75;
+}
+label input {
+    margin-right: 6px;
+}
+input[type="range"] {
+    width: 100%;
+    margin: 10px 0;
+}
+.pricerange{
+    color: #7a7c75;
+    padding: .5rem;
+}
+.clear-btn, .apply-btn{
+    padding: 8px 16px;
+      font-size: 14px;
+      color: #fff;
+      background-color: #4caf50;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+}
+.apply-btn:hover,.clear-btn:hover {
+    background-color: #45a049;
+}
+.course-card-main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px; 
+  flex: 1; 
+}
+.course-card {
+  width: calc(33.333% - 20px); 
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+.course-card:hover {
+  transform: scale(1.05);
+}
+.stars-filter {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+  font-size: 16px;
+  color: rgb(218, 218, 34);
+}
+
+
+@media (max-width: 1024px) {
+  .course-card {
+      width: calc(50% - 20px); 
+  }
+}
+
+@media (max-width: 768px) {
+  .workshop-container {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .filter-container {
+      position: relative;
+      width: 100%;
+      margin-bottom: 20px;
+  }
+
+  .course-card-main {
+      justify-content: center;
+  }
+
+  .course-card {
+      width: 100%; 
+  }
+}
+

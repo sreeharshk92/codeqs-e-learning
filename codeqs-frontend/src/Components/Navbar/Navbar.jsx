@@ -65,6 +65,7 @@ const Navbar = ({ onSearch }) => {
 
         <Link to="/"> Home</Link>
         <Link to="/courses">Courses</Link>
+        <Link to="/workshop">Workshop</Link>
 
         {isAuthenticated ? (
           <>
