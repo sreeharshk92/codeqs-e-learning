@@ -35,6 +35,33 @@ const LeftMenu = () => {
                     </Link>
                 </li>
                 <li className="nav-item">
+                    <Link to="/workshop/categorylist" className="nav-link">
+                        <FontAwesomeIcon icon={faTh} className="nav-icon" />
+                        <p className="menu-item-text">
+                            workshop categorylist
+                            {/* <span className="right badge badge-danger">New</span> */}
+                        </p>
+                    </Link>
+                </li>
+                <li className="nav-item">
+                    <Link to="/workshoplist" className="nav-link">
+                        <FontAwesomeIcon icon={faTh} className="nav-icon" />
+                        <p className="menu-item-text">
+                            workshop list
+                            {/* <span className="right badge badge-danger">New</span> */}
+                        </p>
+                    </Link>
+                </li>
+                <li className="nav-item">
+                    <Link to="/workshop/videolist" className="nav-link">
+                        <FontAwesomeIcon icon={faTh} className="nav-icon" />
+                        <p className="menu-item-text">
+                            workshop video list
+                            {/* <span className="right badge badge-danger">New</span> */}
+                        </p>
+                    </Link>
+                </li>
+                <li className="nav-item">
                     <Link to="/userslist" className="nav-link" onClick={() => localStorage.removeItem('userRole')}>
                         <FontAwesomeIcon icon={faTh} className="nav-icon" />
                         <p className="menu-item-text">
