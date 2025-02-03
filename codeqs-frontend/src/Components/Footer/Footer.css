@@ -50,47 +50,13 @@
     color: #ff5722;
     transform: scale(1.1);
 }
+
 /* Address Section */
-.footer-two ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.footer-two {
+    margin-bottom: 20px; /* Add margin for spacing */
 }
 
-.footer-two li {
-    display: flex;
-    align-items: flex-start; /* Aligns icons and text */
-    gap: 10px; /* Adds space between icon and text */
-    margin-bottom: 12px;
-    font-size: 14px;
-    line-height: 1.6; /* Improves readability */
-}
-
-.footer-two li .icon {
-    flex-shrink: 0; /* Prevents icons from shrinking */
-    margin-top: 2px; /* Aligns icon with the text baseline */
-    color: #6c63ff;
-    font-size: 18px;
-}
-
-.footer-two h2 {
-    text-align: left; /* Ensures the heading aligns with the content */
-    font-size: 20px;
-    color: #333;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #ffcc00;
-    padding-bottom: 5px;
-}
-
-/* Adjust text wrapping */
-.footer-two li span {
-    word-wrap: break-word; /* Ensures long text wraps */
-    max-width: 100%; /* Prevents overflow */
-}
-
-
-/* Address Section and Links */
-/* .footer-two ul, */
+.footer-two ul,
 .footer-three ul,
 .footer-four ul {
     list-style: none;
@@ -98,19 +64,40 @@
     margin: 0;
 }
 
-/* .footer-two li, */
-.footer-three li,
-.footer-four li {
+.footer-two li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
     margin-bottom: 12px;
     font-size: 14px;
+    line-height: 1.6;
 }
 
-.icon {
-    margin-right: 10px;
-    font-size: 18px;
+.footer-two li .icon {
+    flex-shrink: 0;
+    margin-top: 2px;
     color: #6c63ff;
+    font-size: 18px;
 }
 
+.footer-two h2,
+.footer-three h2,
+.footer-four h2 {
+    text-align: left;
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ffcc00; /* Fixed extra semicolon */
+    padding-bottom: 5px;
+}
+
+/* Adjust text wrapping */
+.footer-two li span {
+    word-wrap: break-word;
+    max-width: 100%;
+}
+
+/* Footer Links */
 .footer-link {
     text-decoration: none;
     color: #333;
@@ -119,17 +106,6 @@
 
 .footer-link:hover {
     color: #ff5722;
-}
-
-/* Section Titles */
-.footer-two h2,
-.footer-three h2,
-.footer-four h2 {
-    font-size: 20px;
-    color: #333;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #ffcc00;;
-    padding-bottom: 5px;
 }
 
 /* Divider Line */
@@ -163,12 +139,15 @@
     .footer {
         padding: 20px 10px;
     }
-    .footer-one{
+
+    .footer-one {
         display: none;
     }
+
     .footer-line {
         display: none;
     }
+
     .logof-img {
         width: 120px;
     }
@@ -183,8 +162,6 @@
     .fp {
         font-size: 13px;
     }
-    
-    
 }
 
 /* Extra Small Screens (Up to 480px) */
@@ -192,7 +169,6 @@
     .footer {
         padding: 15px 5px;
     }
-    
 
     .footer > div {
         text-align: center;
@@ -212,121 +188,16 @@
     .footer-four h2 {
         font-size: 16px;
     }
+
     .footer-two li {
-        flex-direction: column; /* Ensures vertical alignment */
+        flex-direction: column;
     }
 
     .footer-two li .icon {
-        font-size: 16px; /* Adjust icon size for smaller screens */
+        font-size: 16px;
     }
 
     .footer-two li span {
-        font-size: 12px; /* Reduces font size for better fit */
-    }
-}
-
-
-
-
-
-/* General Address Section Styling */
-.footer-two ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.footer-two li {
-    display: flex;
-    align-items: flex-start; /* Aligns icon and text */
-    gap: 10px; /* Adds space between icon and text */
-    margin-bottom: 12px;
-    font-size: 14px;
-    line-height: 1.6; /* Improves readability */
-}
-
-.footer-two li .icon {
-    flex-shrink: 0; /* Prevents icons from shrinking */
-    margin-top: 2px; /* Aligns icon with text baseline */
-    color: #6c63ff;
-    font-size: 18px;
-}
-
-/* Ensure long text wraps properly */
-.footer-two li span {
-    word-wrap: break-word; /* Ensures long text wraps */
-    max-width: 100%; /* Prevents overflow */
-}
-
-/* Section Title Styling */
-.footer-two h2 {
-    text-align: left; /* Ensures heading aligns with the content */
-    font-size: 20px;
-    color: #333;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #ffcc00;
-    padding-bottom: 5px;
-}
-
-/* Responsive Design Adjustments */
-
-/* Medium Screens (Up to 992px) */
-@media (max-width: 992px) {
-    .footer-two {
-        text-align: center; /* Centers content for medium screens */
-    }
-
-    .footer-two h2 {
-        text-align: center; /* Center aligns the section title */
-    }
-
-    .footer-two li {
-        justify-content: center; /* Centers icons and text */
-    }
-}
-
-/* Small Screens (Up to 768px) */
-@media (max-width: 768px) {
-    .footer-two {
-        text-align: center; /* Centers content */
-    }
-
-    .footer-two h2 {
-        font-size: 18px; /* Reduces heading size */
-        text-align: center; /* Centers heading */
-    }
-
-    .footer-two li {
-        justify-content: center; /* Centers icons and text */
-        flex-direction: column; /* Stacks icon above text */
-        align-items: center; /* Aligns icon and text in the center */
-    }
-
-    .footer-two li .icon {
-        margin-bottom: 8px; /* Adds spacing between icon and text */
-        margin-top: 0; /* Removes top margin for vertical alignment */
-    }
-
-    .footer-two li span {
-        text-align: center; /* Centers the address text */
-    }
-}
-
-/* Extra Small Screens (Up to 480px) */
-@media (max-width: 480px) {
-    .footer-two h2 {
-        font-size: 16px; /* Further reduces heading size */
-    }
-
-    .footer-two li {
-        flex-direction: column; /* Ensures vertical alignment */
-    }
-
-    .footer-two li .icon {
-        font-size: 16px; /* Adjust icon size for smaller screens */
-    }
-
-    .footer-two li span {
-        font-size: 12px; /* Reduces font size for better fit */
+        font-size: 12px;
     }
 }

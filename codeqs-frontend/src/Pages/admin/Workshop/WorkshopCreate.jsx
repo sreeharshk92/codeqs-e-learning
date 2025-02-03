@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 
 export default function WorkshopCreate() {
-  
   const initialFormState = {
     category_id: "",
     title: "",
     description: "",
-    price: "",
-   discount: "",
-   seat_available: "",
+    price: "0",
+    discount: "",
+    seat_available: "",
+    subscribe: "free", // Added default value
     image: null,
   };
 
@@ -77,7 +77,7 @@ export default function WorkshopCreate() {
   return (
     <div className="max-w-2xl p-4 mx-auto">
       <div className="p-6 bg-white rounded-lg shadow">
-        <h2 className="mb-6 text-2xl font-bold">Create New workshop</h2>
+        <h2 className="mb-6 text-2xl font-bold">Create New Workshop</h2>
         {error && (
           <div className="px-4 py-3 mb-4 text-red-700 bg-red-100 border border-red-400 rounded">
             {error}
@@ -131,6 +131,20 @@ export default function WorkshopCreate() {
           </div>
 
           <div>
+            <label className="block mb-1 text-sm font-medium">Subscription Type</label>
+            <select
+              name="subscribe"
+              value={formData.subscribe}
+              onChange={handleChange}
+              className="w-full p-2 border rounded"
+              required
+            >
+              <option value="free">Free</option>
+              <option value="paid">Paid</option>
+            </select>
+          </div>
+
+          <div>
             <label className="block mb-1 text-sm font-medium">Price</label>
             <input
               type="number"
@@ -140,6 +154,7 @@ export default function WorkshopCreate() {
               step="0.01"
               className="w-full p-2 border rounded"
               required
+              disabled={formData.subscribe === "free"}
             />
           </div>
 
@@ -152,11 +167,12 @@ export default function WorkshopCreate() {
               onChange={handleChange}
               className="w-full p-2 border rounded"
               required
+              disabled={formData.subscribe === "free"}
             />
           </div>
           
           <div>
-            <label className="block mb-1 text-sm font-medium">Seat_available</label>
+            <label className="block mb-1 text-sm font-medium">Seats Available</label>
             <input
               type="number"
               name="seat_available"
@@ -183,11 +199,10 @@ export default function WorkshopCreate() {
             disabled={loading}
             className="w-full px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700 disabled:bg-blue-300"
           >
-            {loading ? "Creating..." : "Create workshop"}
+            {loading ? "Creating..." : "Create Workshop"}
           </button>
         </form>
       </div>
     </div>
   );
-};
-
+}

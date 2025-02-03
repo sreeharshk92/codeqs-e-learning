@@ -17,6 +17,7 @@ class Workshop extends Model
         'category_id',
         'images',
         'seat_available',
+        'subscribe'
     ];
 
     public function category()

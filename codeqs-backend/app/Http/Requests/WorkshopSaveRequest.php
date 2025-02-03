@@ -30,6 +30,7 @@ class WorkshopSaveRequest extends FormRequest
             'discount' => 'nullable|numeric|min:0',
             'category_id' => 'required|exists:workshop_categories,id',
             'seat_available' => 'required|integer|min:0',
+            'subscribe'=>'required'
         ];
 
         // Add image validation based on request type
