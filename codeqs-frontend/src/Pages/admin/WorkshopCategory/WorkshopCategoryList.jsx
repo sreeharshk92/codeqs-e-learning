@@ -1,5 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import Master from "../layout/Master";
+import './WorkshopCategoryList.css'
 
 export default function WorkshopCategoryList(){
     const [categories, setCategories] = useState([]);
@@ -59,6 +61,9 @@ const navigate= useNavigate();
     };
 
     return (
+        <>
+      <Master />
+       
         <div className="admin-category-table">
             <h2>Category Management</h2>
             <Link to="/adminworkshopcategory" className="link-button create-category-btn">
@@ -89,5 +94,7 @@ const navigate= useNavigate();
                 </tbody>
             </table>
         </div>
+        </>
     );
 };
+

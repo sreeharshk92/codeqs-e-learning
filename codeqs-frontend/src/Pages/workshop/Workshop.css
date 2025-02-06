@@ -6,6 +6,7 @@
   margin: 30px 56px;
   border-radius: 15px;
 }
+
 .workshop-container {
   display: flex;
   align-items: flex-start;
@@ -65,6 +66,8 @@ input[type="range"] {
 .apply-btn:hover,.clear-btn:hover {
     background-color: #45a049;
 }
+
+/* 
 .course-card-main {
   display: flex;
   
@@ -119,4 +122,4 @@ input[type="range"] {
       width: 100%; 
   }
 }
-
+ */

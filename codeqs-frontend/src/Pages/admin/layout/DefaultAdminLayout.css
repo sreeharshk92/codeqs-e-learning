@@ -14,7 +14,7 @@
 
 .left-menu {
     width: 250px; /* Fixed sidebar width */
-    background-color: #343a40;
+    background-color: rgb(244, 234, 234);
     color: white;
     height: 100%;
 }
