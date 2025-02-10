@@ -6,6 +6,7 @@ import Navbar from '../../Components/Navbar/Navbar';
 import Footer from '../../Components/Footer/Footer';
 import CountdownTimer from '../../Components/CountdownTimer/CountdownTimer';
 import { Lock } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Workshop = () => {
   const [price, setPrice] = useState(50000);
@@ -17,6 +18,7 @@ const Workshop = () => {
   const [sortOrder, setOrderBy] = useState('default');
   const [showQR, setShowQR] = useState(false);
   const [selectedWorkshop, setSelectedWorkshop] = useState(null);
+  const navigate = useNavigate(); // Initialize navigate function
 
   // QR Code Modal Component
   const QRModal = ({ workshop, onClose }) => (
@@ -106,10 +108,11 @@ const Workshop = () => {
       setSelectedWorkshop(workshop);
       setShowQR(true);
     } else {
-      // Handle free workshop enrollment
-      window.location.href = `/workshop-detail/${workshop.id}`;
+      localStorage.setItem("selectedWorkshop", JSON.stringify(workshop));
+      navigate(`/workshop-detail/${workshop.id}`, { state: { workshop } });
     }
   };
+  
 
   const handleCategoryChange = (categoryId) => {
     setSelectedCategory(categoryId);

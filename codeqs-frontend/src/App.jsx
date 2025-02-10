@@ -23,6 +23,7 @@ import WorkshopVideoCreate from './Pages/admin/WorkshopVideo/WorkshopVideoCreate
 import WorkshopVideoList from './Pages/admin/WorkshopVideo/WorkshopVideoList';
 import WorkshopVideoEdit from './Pages/admin/WorkshopVideo/WorkshopVideoEdit';
 import Workshop from './Pages/workshop/Workshop';
+import WorkshopDetail from './Pages/WorkshopDetail/WorkshopDetail';
 
 const App = () => {
     return (
@@ -36,6 +37,8 @@ const App = () => {
                 <Route element={<PrivateRoute />}>
                     <Route path="/courses" element={<Courses />} />
                     <Route path="/workshop" element={<Workshop />} />
+                    <Route path="/workshop-detail/:id" element={<WorkshopDetail />} />
+
                     <Route path="/coursedetails/:courseId" element={<Coursedetails />} />
                 </Route>
 
