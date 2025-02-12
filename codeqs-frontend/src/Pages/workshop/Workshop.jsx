@@ -224,7 +224,7 @@ const Workshop = () => {
         <div className="course-card-main">
           {getFilteredWorkshops().map((workshop) => (
             <div className="course-card" key={workshop.id}>
-              <div className="relative">
+              <div className="image-container">
                 <img
                   src={`http://127.0.0.1:8000/storage/images/${workshop.images}`}
                   alt={workshop.title}
@@ -238,9 +238,9 @@ const Workshop = () => {
               </div>
               <div className="course-content">
                 <h2 className="course-title">{workshop.title}</h2>
-                <p className="ps">{workshop.description}</p>
-                <p className="ps">Seats Available: {workshop.seat_available}</p>
-                <p className="ps">
+                <p className="course-description">{workshop.description}</p>
+                <p className="course-description">Seats Available: {workshop.seat_available}</p>
+                <p className="course-description">
                   {workshop.subscribe === 'free' ? (
                     <span className="font-semibold text-green-600">Free Workshop</span>
                   ) : (
