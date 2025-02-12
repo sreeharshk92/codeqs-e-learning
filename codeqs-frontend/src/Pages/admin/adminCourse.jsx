@@ -3,8 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './adminCourse.css'; // Ensure this CSS file exists
 import DefaultAdminLayout from './layout/DefaultAdminLayout';
-
-
 import baseUrl from '../../config/baseUrl';
 
 
@@ -13,7 +11,13 @@ const Course = () => {
     const [categories, setCategories] = useState([]);
     const [learningOutcomes, setLearningOutcomes] = useState(['']);
     const [videos, setVideos] = useState([null]); // Initialize with one empty file input
-const [categoryName, setCategoryName] = useState('')
+    const [categoryName, setCategoryName] = useState('')
+    const [shortDescription, setShortDescription] = useState('');
+    const [longDescription, setLongDescription] = useState('');
+    const MAX_SHORT_DESC = 100;
+    const MAX_LONG_DESC = 500;
+
+
     useEffect(() => {
         const fetchCategories = async () => {
             try {
@@ -75,7 +79,15 @@ const [categoryName, setCategoryName] = useState('')
             console.error('Error saving course:', error);
         }
     };
+    const handleShortDescriptionChange = (e) => {
+        const value = e.target.value;
+        if (value.length <= MAX_SHORT_DESC) setShortDescription(value);
+    };
 
+    const handleLongDescriptionChange = (e) => {
+        const value = e.target.value;
+        if (value.length <= MAX_LONG_DESC) setLongDescription(value);
+    };
     const handleLearningOutcomeChange = (index, value) => {
         const updatedOutcomes = [...learningOutcomes];
         updatedOutcomes[index] = value;
@@ -156,20 +168,18 @@ const [categoryName, setCategoryName] = useState('')
                                 <option key={category.id} value={category.id}>{category.name}</option>
                             ))}
                         </select>
+{/* 
+                      <button type="submit" onClick={handleAddCategory} className="btn btn-secondary">Add Category</button>
 
-    <button type="submit" onClick={handleAddCategory} className="btn btn-secondary">Add Category</button>
-
-        <input
-            type="text"
-            name='categoryName'
-            className="form-control"
-            value={categoryName}
-            placeholder="Enter new category"
-            onChange={(e)=>setCategoryName(e.target.value)}
-
-/>
-
-                     </div>
+                <input
+                    type="text"
+                    name='categoryName'
+                    className="form-control"
+                    value={categoryName}
+                    placeholder="Enter new category"
+                    onChange={(e)=>setCategoryName(e.target.value)}
+                        /> */}
+                  </div>
 
                   
                     <div className="form-group">
@@ -190,10 +200,15 @@ const [categoryName, setCategoryName] = useState('')
                         <label>Image</label>
                         <input type="file" className="form-control-file" name="image" required />
                     </div>
+
                     <div className="form-group">
-                        <label>Description</label>
-                        <textarea className="form-control" name="description" placeholder="Enter course description"></textarea>
+                    <label>Short Description (Max {MAX_SHORT_DESC} characters)</label>
+                            <textarea className="form-control" name="short_description" 
+                                value={shortDescription} onChange={handleShortDescriptionChange}
+                                placeholder="Enter short description" maxLength={MAX_SHORT_DESC} required />
+                            <small>{shortDescription.length}/{MAX_SHORT_DESC} characters</small>
                     </div>
+
                     <div className="form-group">
                         <label>Mentor</label>
                         <input type="text" className="form-control" name="mentor" placeholder="Enter mentor name" />
@@ -210,11 +225,14 @@ const [categoryName, setCategoryName] = useState('')
                         <label>Total Hours</label>
                         <input type="number" className="form-control" name="total_hours" placeholder="Enter total hours" required />
                     </div>
-                    <div className="form-group">
-                        <label>Short Description</label>
-                        <textarea className="form-control" name="short_description" placeholder="Enter short description"></textarea>
-                    </div>
 
+                    <div className="form-group">
+                    <label>Description (Max {MAX_LONG_DESC} characters)</label>
+                            <textarea className="form-control" name="description"
+                                value={longDescription} onChange={handleLongDescriptionChange}
+                                placeholder="Enter course description" maxLength={MAX_LONG_DESC} required />
+                            <small>{longDescription.length}/{MAX_LONG_DESC} characters</small>
+                         </div>
                     {/* Dynamic Learning Outcomes */}
                     <div className="form-group">
                         <label>Learning Outcomes</label>
@@ -245,7 +263,7 @@ const [categoryName, setCategoryName] = useState('')
                               required
                             />
                         ))}
-                        <button type="button" onClick={addVideo} className="btn btn-secondary mt-2">Add Video</button>
+                        {/* <button type="button" onClick={addVideo} className="btn btn-secondary mt-2">Add Video</button> */}
                     </div>
 
                     <div className="form-group">

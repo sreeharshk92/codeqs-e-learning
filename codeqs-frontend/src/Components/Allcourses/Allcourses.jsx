@@ -3,7 +3,7 @@ import CourseCard from '../Coursecard/Coursecard';
 import './Allcourses.css';
 import baseUrl from '../../config/baseUrl';
 
-const AllCourses = ({searchTerm}) => {
+const AllCourses = ({ searchTerm }) => {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -16,6 +16,7 @@ const AllCourses = ({searchTerm}) => {
         if (!response.ok) {
           throw new Error('Failed to fetch courses');
         }
+
         const data = await response.json();
         setCourses(data.data);
       } catch (error) {
@@ -38,14 +39,12 @@ const AllCourses = ({searchTerm}) => {
   return (
     <div>
       <div className="header">
-        <h2 className='hdr-h2'>All Courses</h2>
+        <h2 className="hdr-h2">All Courses</h2>
       </div>
-      <div className='g-arrow'>
-        <div className="course-grid">
+      <div className="course-grid">
         {filteredCourses.map((course) => (
-            <CourseCard key={course.id} course={course} />
-          ))}
-        </div>
+          <CourseCard key={course.id} course={course} />
+        ))}
       </div>
     </div>
   );

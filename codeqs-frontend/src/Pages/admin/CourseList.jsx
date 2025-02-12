@@ -82,7 +82,7 @@ const CourseList = () => {
                             <th>Mentor</th>
                             <th>Rating</th>
                             <th>Total Hours</th>
-                            <th>Short Description</th>
+                            {/* <th>Short Description</th> */}
                             <th>Zoom Link</th>
                             <th>Certificates</th>
                             <th>Videos</th>
@@ -118,7 +118,7 @@ const CourseList = () => {
                                     <td>{course.mentor || 'N/A'}</td>
                                     <td>{course.rating || 'N/A'}</td>
                                     <td>{course.total_hours || 'N/A'}</td>
-                                    <td>{course.short_description || 'N/A'}</td>
+                                    {/* <td>{course.short_description || 'N/A'}</td> */}
                                     <td>{course.zoom_link || 'N/A'}</td>
                                     <td>{course.certificates || 'N/A'}</td>
                                     <td>

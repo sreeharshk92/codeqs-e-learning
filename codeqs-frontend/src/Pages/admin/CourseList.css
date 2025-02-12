@@ -12,14 +12,15 @@
     padding: 20px;
     margin-top: 20px;
     width: 100%;
+    min-height: 500px;
     box-sizing: border-box;
-    overflow-x: hidden; /* Avoids scrollbars */
+    overflow-x: auto;
 }
 
 .table {
     width: 100%;
     border-collapse: collapse;
-    box-sizing: border-box;
+    table-layout: fixed;
 }
 
 .course-header {
@@ -36,26 +37,14 @@
     font-weight: 600;
 }
 
-.course-header .btn {
-    background-color: #007bff;
-    padding: 12px 20px;
-    color: white;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 14px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.course-header .btn:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px);
-}
-
 .table th, .table td {
     padding: 12px 10px;
     text-align: left;
     border: 1px solid #e0e0e0;
     font-size: 14px;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .table th {
@@ -64,70 +53,47 @@
     font-size: 14px;
 }
 
-.table td {
-    font-size: 14px;
-    color: #333;
-}
-
-.table img {
-    width: 60px;
-    height: 60px;
-    border-radius: 8px;
-}
-
-.table button {
-    padding: 8px 12px;
+/* ✅ Image Styling */
+.course-img {
+    display: block;
+    width: 100px;
+    height: 70px;
+    object-fit: cover;
     border-radius: 5px;
-    border: none;
+}
+
+/* ✅ Button Styling */
+.btn {
+    padding: 8px 14px;
+    font-size: 14px;
+    border-radius: 5px;
+    text-align: center;
     cursor: pointer;
-    font-size: 12px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    transition: all 0.3s ease;
 }
 
-.table .btn-danger {
-    background-color: #dc3545;
+.btn-edit {
+    background-color: #fbc02d;
+    color: white;
+    margin-right: 5px;
+}
+
+.btn-edit:hover {
+    background-color: #e6a800;
+}
+
+.btn-delete {
+    background-color: #e53935;
     color: white;
 }
 
-.table .btn-warning {
-    background-color: #ffc107;
-    color: white;
-}
-
-.table .btn-danger:hover {
-    background-color: #c82333;
-    transform: translateY(-2px);
-}
-
-.table .btn-warning:hover {
-    background-color: #e0a800;
-    transform: translateY(-2px);
+.btn-delete:hover {
+    background-color: #c62828;
 }
 
 @media (max-width: 1430px) {
     .course-table {
-       
-        overflow-x: auto; /* Avoids scrollbars */
-    }
-    /* .course-header {
-        flex-direction: column;
-        align-items: flex-start;
-    } */
-
-    .course-header h3 {
-        font-size: 22px;
-    }
-
-    .course-header .btn {
-        font-size: 14px;
-        padding: 10px 18px;
-    }
-
-    .table th, .table td {
-        padding: 10px 15px;
-    }
-
-    .table img {
-        width: 50px;
+        overflow-x: auto;
     }
 }

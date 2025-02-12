@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
+import baseUrl from "../../config/baseUrl"; // Adjust the path based on your file structure
+
 import './EditCourse.css';
 
 const EditCourse = () => {
     const { id } = useParams();
+    console.log("Course ID from URL:", id);
+
     const [course, setCourse] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');

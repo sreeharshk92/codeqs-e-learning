@@ -200,7 +200,7 @@ const Coursedetails = () => {
         </div>
       </div>
 
-      {isFormVisible && <UserInfoForm onSubmit={handleFormSubmit} />}
+      {/* {isFormVisible && <UserInfoForm onSubmit={handleFormSubmit} />} */}
       <Footer />
     </>
   );
