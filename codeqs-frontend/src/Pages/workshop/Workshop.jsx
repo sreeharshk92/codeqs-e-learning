@@ -7,8 +7,12 @@ import Footer from '../../Components/Footer/Footer';
 import CountdownTimer from '../../Components/CountdownTimer/CountdownTimer';
 import { Lock } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import baseUrl from '../../config/baseUrl';
+import PhoneNumberModal from './PhoneNumberModal';
 
 const Workshop = () => {
+
   const [price, setPrice] = useState(50000);
   const [workshops, setWorkshops] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -19,6 +23,8 @@ const Workshop = () => {
   const [showQR, setShowQR] = useState(false);
   const [selectedWorkshop, setSelectedWorkshop] = useState(null);
   const navigate = useNavigate(); // Initialize navigate function
+  const [showPhoneModal, setShowPhoneModal] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useState("");
 
   // QR Code Modal Component
   const QRModal = ({ workshop, onClose }) => (
@@ -26,15 +32,15 @@ const Workshop = () => {
       <div className="w-full max-w-sm p-6 bg-white rounded-lg shadow-xl">
         <h3 className="mb-4 text-xl font-bold">Enroll in {workshop.title}</h3>
         <div className="flex justify-center mb-4">
-          <img 
-            src={qrcodeImage} 
+          <img
+            src={qrcodeImage}
             alt="Payment QR Code"
-            className="w-64 h-64" 
+            className="w-64 h-64"
           />
         </div>
         <p className="mb-4 text-center">Scan to complete payment</p>
         <p className="mb-4 text-center">Amount: ${Number(workshop.price - workshop.discount).toFixed(2)}</p>
-        <button 
+        <button
           onClick={onClose}
           className="w-full py-2 text-white bg-blue-600 rounded hover:bg-blue-700"
         >
@@ -43,6 +49,8 @@ const Workshop = () => {
       </div>
     </div>
   );
+
+
 
   // Fetch categories and workshops
   useEffect(() => {
@@ -59,9 +67,12 @@ const Workshop = () => {
 
         const categoryData = await categoryResponse.json();
         const workshopData = await workshopResponse.json();
-        
+
         setCategories(categoryData.data);
         setWorkshops(workshopData.data);
+
+
+
       } catch (err) {
         setError('Failed to load workshops. Please try again later.');
       } finally {
@@ -78,13 +89,13 @@ const Workshop = () => {
 
     // Filter by category
     if (selectedCategory) {
-      filtered = filtered.filter(workshop => 
+      filtered = filtered.filter(workshop =>
         workshop.category_id === parseInt(selectedCategory)
       );
     }
 
     // Filter by price
-    filtered = filtered.filter(workshop => 
+    filtered = filtered.filter(workshop =>
       parseFloat(workshop.price) <= price
     );
 
@@ -107,12 +118,13 @@ const Workshop = () => {
     if (workshop.subscribe === 'paid') {
       setSelectedWorkshop(workshop);
       setShowQR(true);
+      setShowPhoneModal(true);
     } else {
       localStorage.setItem("selectedWorkshop", JSON.stringify(workshop));
       navigate(`/workshop-detail/${workshop.id}`, { state: { workshop } });
     }
   };
-  
+
 
   const handleCategoryChange = (categoryId) => {
     setSelectedCategory(categoryId);
@@ -127,18 +139,120 @@ const Workshop = () => {
   if (loading) return <div className="loading">Loading workshops...</div>;
   if (error) return <div className="error">{error}</div>;
 
+
+  const handlePhoneSubmit = (number) => {
+    setPhoneNumber(number);
+    setShowPhoneModal(false);
+    handlePayment(selectedWorkshop, number);
+  };
+ 
+
+
+  /////// Payment function starts here //////////////
+  const handlePayment = async (workshop) => {
+    try {
+
+
+      const amount = workshop.price;
+      const workShopId = workshop.id;
+      const userName = localStorage.getItem('userName');
+      const userEmail = localStorage.getItem('userEmail');
+      const userId = localStorage.getItem('userId');
+      console.log(userId);
+      
+
+      const response = await axios.post(`${baseUrl}/api/create-order`, {
+
+        workshopId: workShopId,
+        amount: amount,
+        userId: userId,
+        name: userName,
+        email: userEmail,
+        phone: phoneNumber,
+
+      });
+
+      const { order_id } = response.data;
+      if (!order_id) {
+        alert("Order ID not returned from backend.");
+        return;
+      }
+
+      const options = {
+        key: "rzp_test_ruOiF1gDsqblik",
+        amount: amount * 100,
+        currency: "INR",
+        name: "CODEQS",
+        description: `Payment for ${workshop.title}`,
+        order_id: order_id,
+        handler: async function (response) {
+          try {
+
+
+            const verificationResponse = await axios.post(`${baseUrl}/api/verify-payment`, {
+
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature,
+              workshopId: workShopId,
+              userId: userId,
+              amount: amount,
+              name: userName,
+              email: userEmail,
+              phone: phoneNumber
+            });
+
+            if (verificationResponse.data.status === 'Payment updated successfully') {
+              alert("Payment successful!");
+            } else {
+              alert("Payment verification failed: " + JSON.stringify(verificationResponse.data));
+            }
+          } catch (error) {
+            console.error("Verification error:", error);
+            alert("Error during payment verification. See console for details.");
+          }
+        },
+        prefill: {
+         
+          name: userName,
+          email: userEmail,
+          phone: phoneNumber,
+
+        },
+        notes: {
+          address: "Razorpay Corporate Office"
+        },
+        theme: {
+          color: "#F37254"
+        }
+      };
+
+      const razorpay = new window.Razorpay(options);
+      razorpay.open();
+    } catch (error) {
+      console.error("Order creation error:", error);
+      alert("Error creating order. See console for details.");
+    }
+  };
+
+  /////// Payment function ends here //////////////
+
+
+  
+
+
   return (
     <div className="main-course">
       <Navbar />
       <div className="crs-bnr">
         <img src={coursebnr} alt="Course Banner" className="crs-img" />
       </div>
-      
+
       <section className="workshop-container">
         {/* Leftside filter section */}
         <div className="filter-container">
-          <h3 style={{color: 'rgb(4, 14, 122)'}}>Filters</h3>
-          
+          <h3 style={{ color: 'rgb(4, 14, 122)' }}>Filters</h3>
+
           {/* Course categories */}
           <div className="filter-section">
             <h4 className="hfour">Course Categories</h4>
@@ -226,7 +340,7 @@ const Workshop = () => {
             <div className="course-card" key={workshop.id}>
               <div className="image-container">
                 <img
-                  src={`http://127.0.0.1:8000/storage/images/${workshop.images}`}
+                  src={`http://127.0.0.1:8000/storage/${workshop.images}`}
                   alt={workshop.title}
                   className="course-cover-pic"
                 />
@@ -258,7 +372,7 @@ const Workshop = () => {
                   )}
                 </p>
                 <CountdownTimer durationInHours="2hr" />
-                <button 
+                <button
                   className="course-enroll-button"
                   onClick={() => handleEnrollClick(workshop)}
                 >
@@ -269,17 +383,21 @@ const Workshop = () => {
           ))}
         </div>
       </section>
-      
+
+      {showPhoneModal && (
+        <PhoneNumberModal onSubmit={handlePhoneSubmit} onClose={() => setShowPhoneModal(false)} />
+      )}
+
       {showQR && selectedWorkshop && (
-        <QRModal 
-          workshop={selectedWorkshop} 
+        <QRModal
+          workshop={selectedWorkshop}
           onClose={() => {
             setShowQR(false);
             setSelectedWorkshop(null);
           }}
         />
       )}
-      
+
       <Footer />
     </div>
   );

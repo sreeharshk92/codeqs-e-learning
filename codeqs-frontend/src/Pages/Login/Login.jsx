@@ -44,11 +44,13 @@ const Login = () => {
                 const userRole = data.user.role;
                 const userName = data.user.name;
                 const userEmail = data.user.email;
+                const userId = data.user.id;
 
                 if (userRole) {
                     localStorage.setItem('userRole', userRole); // Store role
                     localStorage.setItem('userName', userName); // Store name
                     localStorage.setItem('userEmail', userEmail); // Store email
+                    localStorage.setItem('userId', userId); // Store id
                 }
 
                 if (data.token) {

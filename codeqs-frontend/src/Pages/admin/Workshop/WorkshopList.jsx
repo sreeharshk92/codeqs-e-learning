@@ -97,7 +97,7 @@ export default function WorkshopList() {
                                 <td>{product.id}</td>
                                 <th>{product.images && (
                         <img
-                            src={`http://127.0.0.1:8000/storage/images/${product.images}`}
+                            src={`http://127.0.0.1:8000/storage/${product.images}`}
                             alt="Current Product"
                             className="object-cover object-center w-full h-full"
         style={{ maxWidth: '100px', maxHeight: '100px' }}

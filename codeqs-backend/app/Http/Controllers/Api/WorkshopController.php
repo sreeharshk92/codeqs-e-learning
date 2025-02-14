@@ -10,24 +10,41 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class WorkshopController extends Controller
 {
     public function store(WorkshopSaveRequest $request)
     {
+        $validator = Validator::make($request->all(), (new WorkshopSaveRequest())->rules());
+    
+        if ($validator->fails()) {
+            return response()->json([
+                'message' => 'Validation failed',
+                'errors' => $validator->errors()
+            ], 422);
+        }
+    
         $input = $request->validated();
-
+        
         // Handle image upload
         if ($request->hasFile('images')) {
-            $extension = $request->images->extension();
-            $filename = Str::random(6) . "-" . time() . "_workshop." . $extension;
-            $request->images->storeAs('images', $filename);
-            $input['images'] = $filename;
+            $file = $request->file('images');
+            $filename = time() . "_" . $file->getClientOriginalName();
+            
+            // Store in storage/app/public/images
+            $file->storeAs('images', $filename);
+        
+            // Save only the relative path in the database
+            $input['images'] = 'images/' . $filename;  
         }
-
+        
+        
+    
         $workshop = Workshop::create($input);
         return response()->json(['message' => 'Workshop saved successfully.', 'data' => $workshop], 201);
     }
+    
 
     public function list()
     {

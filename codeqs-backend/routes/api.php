@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\WorkshopCategoryController;
 use App\Http\Controllers\Api\WorkshopController;
 use App\Http\Controllers\Api\WorkshopVideosController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\WorkshopPaymentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,8 +30,14 @@ Route::post('/personal', [UserInfoController::class, 'userinfo']);
 Route::get('/show',[UserInfoController::class, 'show']);
 Route::get('/payments-list',[PaymentController::class, 'paymentsList']);
 
+//Course payment
 Route::post('/create-order', [PaymentController::class, 'createOrder']);
 Route::post('/verify-payment', [PaymentController::class, 'verifyPayment']);
+
+//Workshop payment
+Route::post('/create-order', [WorkshopPaymentController::class, 'createOrder']);
+Route::post('/verify-payment', [WorkshopPaymentController::class, 'verifyPayment']);
+Route::get('/workshop-payments-list', [WorkshopPaymentController::class, 'getPayments']);
 
 Route::get('/search-courses/{key}',[CourseController::class,'searchCourses']);
 
@@ -41,6 +48,7 @@ Route::prefix('workshopcategory')->name('workshopcategory.')->group(function() {
     Route::get('categoryshow/{id}', [WorkshopCategoryController::class, 'show'])->name('categoryshow');
     Route::post('categoryupdate/{id}', [WorkshopCategoryController::class, 'update'])->name('categoryupdate');
 });
+
 Route::prefix('workshop')->name('workshop.')->group(function() {
     Route::post('productcreate', [WorkshopController::class, 'store'])->name('productcreate');
     Route::get('productlist', [WorkshopController::class, 'list'])->name('productlist');

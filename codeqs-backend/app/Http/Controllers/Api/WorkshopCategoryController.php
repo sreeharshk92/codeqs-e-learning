@@ -9,12 +9,14 @@ use Illuminate\Http\Request;
 
 class WorkshopCategoryController extends Controller
 {
-    public function create(WorkshopCategorySaveRequest $request) {
+    public function create(WorkshopCategorySaveRequest $request)
+    {
         $input = $request->validated();
-       WorkshopCategory::create($input);
+        WorkshopCategory::create($input);
         return response()->json(['message' => 'Category saved successfully.'], 201);
     }
-    public function list() {
+    public function list()
+    {
         $categories = WorkshopCategory::paginate(10); // Adjust the number as needed
         return response()->json($categories);
     }
@@ -22,28 +24,28 @@ class WorkshopCategoryController extends Controller
     public function delete($id)
     {
 
-            // Find the category
-            $category = WorkshopCategory::findOrFail($id);
-$category->delete();
-return response()->json(['message' => 'Category deleted successfully.'], 201);
-
+        // Find the category
+        $category = WorkshopCategory::findOrFail($id);
+        $category->delete();
+        return response()->json(['message' => 'Category deleted successfully.'], 201);
     }
-    public function show($id){
-        $category=WorkshopCategory::findOrFail($id);
+    public function show($id)
+    {
+        $category = WorkshopCategory::findOrFail($id);
         return response()->json($category);
     }
     public function update(WorkshopCategorySaveRequest $request, $id)
-{
-    // Find the category by ID
-    $category = WorkshopCategory::findOrFail($id);
+    {
+        // Find the category by ID
+        $category = WorkshopCategory::findOrFail($id);
 
-    // Validate the request data
-    $validatedData = $request->validated();
+        // Validate the request data
+        $validatedData = $request->validated();
 
-    // Update the category with the validated data
-    $category->update($validatedData);
+        // Update the category with the validated data
+        $category->update($validatedData);
 
-    // Return a success response
-    return response()->json(['message' => 'Category updated successfully.'], 200);
-}
+        // Return a success response
+        return response()->json(['message' => 'Category updated successfully.'], 200);
+    }
 }

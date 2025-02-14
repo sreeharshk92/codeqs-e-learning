@@ -158,7 +158,13 @@ const Coursedetails = () => {
       <div className="course-details-page">
         <div className="main-content">
           <div className="video-section">
-            <video ref={videoRef} src={videoURL} controls={isVideoAccessible} autoPlay />
+            <video ref={videoRef}
+              src={videoURL}
+              controls={isVideoAccessible}
+              autoPlay
+            >
+              Your browser does not support the video tag.
+            </video>
           </div>
           <div className="course-details-content">
             <h2 className="course-details-content-h2">{courseData.name}</h2>
