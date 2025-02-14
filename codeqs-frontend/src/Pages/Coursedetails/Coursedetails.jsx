@@ -155,7 +155,7 @@ const Coursedetails = () => {
   return (
     <>
       <Navbar />
-      <div className="course-details-page">
+      <div className="workshop-container">
         <div className="main-content">
           <div className="video-section">
             <video ref={videoRef} src={videoURL} controls={isVideoAccessible} autoPlay />

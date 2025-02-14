@@ -62,8 +62,8 @@ const WorkshopDetail = () => {
   }, [id, workshop]);
 
   const VideoPlayer = ({ videoUrl }) => (
-    <div className="workshop-video-section">
-      <video controls className="workshop-video-player">
+    <div className="workshop-video-container">
+      <video controls className="workshop-video">
         <source
           src={`http://127.0.0.1:8000/storage/${videoUrl}`}
           type="video/mp4"
@@ -74,71 +74,79 @@ const WorkshopDetail = () => {
   );
 
   if (loading) {
-    return <div className="loading-message">Loading workshop details...</div>;
+    return <div className="workshop-loading">Loading workshop details...</div>;
   }
 
   if (error) {
-    return <div className="error-message">{error}</div>;
+    return <div className="workshop-error">{error}</div>;
   }
 
   if (!workshop) {
-    return <div className="error-message">Workshop not found.</div>;
+    return <div className="workshop-error">Workshop not found.</div>;
   }
-  
+
   return (
-    <>
+    <div>
       <Navbar />
-      <div className="workshop-page-container">
-        <div className="workshop-video-section">
+      <div className="workshop-container">
+        <div className="workshop-header">
+          <h1 className="workshop-title">{workshop.title}</h1>
+          {/* Uncomment the image section if needed */}
+          {/* {workshop.images && (
+            <img
+              src={`http://127.0.0.1:8000/storage/images/${workshop.images}`}
+              alt={workshop.title}
+              className="workshop-image"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = "placeholder-image-url";
+              }}
+            />
+          )} */}
+        </div>
+
+        <div className="workshop-details">
+          <div className="workshop-description">
+            <h2>Description</h2>
+            <p>{workshop.description}</p>
+          </div>
+
+          <div className="workshop-info">
+            <p>Price: ${workshop.price}</p>
+            <p>Seats Available: {workshop.seat_available}</p>
+          </div>
+        </div>
+
+        <div className="workshop-videos">
+          <h2>Workshop Videos</h2>
           {videos.length === 0 ? (
             <p>No videos available for this workshop.</p>
           ) : (
             videos.map((video) => (
-              <div key={video.video_id} className="workshop-video-wrapper">
+              <div key={video.video_id} className="workshop-video-card">
                 <VideoPlayer videoUrl={video.videos} />
                 <h3>{video.topic}</h3>
                 <p>{video.description}</p>
                 <p>Duration: {video.duration}</p>
+                {/* Uncomment the banner section if needed */}
+                {/* {video.banner && (
+                  <img
+                    src={`http://127.0.0.1:8000/storage/banners/${video.banner}`}
+                    alt={`Banner for ${video.topic}`}
+                    className="workshop-video-banner"
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = "placeholder-image-url";
+                    }}
+                  />
+                )} */}
               </div>
             ))
           )}
         </div>
-        <div className="workshop-details-content">
-          <h2>{workshop.title}</h2>
-          <p><strong>Price:</strong> ₹{workshop.price}</p>
-          <p><strong>Seats Available:</strong> {workshop.seat_available}</p>
-
-          <p><strong>Seats Available:</strong> {workshop.seat_available}</p>
-
-{/* Check if videos array is not empty */}
-{videos.length > 0 && (
-  <>
-    <p>
-      <strong>Meet Link:</strong>{" "}
-      <a
-        href={
-          videos[0].google_meet_link?.startsWith("http")
-            ? videos[0].google_meet_link
-            : `https://${videos[0].google_meet_link}`
-        }
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {videos[0].google_meet_link || "No Meet Link Available"}
-      </a>
-    </p>
-    <p>
-      <strong>Meet Topic:</strong> {videos[0].google_meet_topic || "N/A"}
-    </p>
-    <p>
-      <strong>Scheduled time for Join Google Meet:</strong> {videos[0].google_meet_scheduled_at || "N/A"}
-    </p>
-  </>
-)}
-        </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 

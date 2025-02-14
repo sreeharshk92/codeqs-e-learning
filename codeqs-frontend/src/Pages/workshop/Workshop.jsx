@@ -134,7 +134,7 @@ const Workshop = () => {
         <img src={coursebnr} alt="Course Banner" className="crs-img" />
       </div>
       
-      <section className="workshop-container">
+      <section className="workshopcontainer">
         {/* Leftside filter section */}
         <div className="filter-container">
           <h3 style={{color: 'rgb(4, 14, 122)'}}>Filters</h3>

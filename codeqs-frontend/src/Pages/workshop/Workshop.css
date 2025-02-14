@@ -7,7 +7,7 @@
   border-radius: 15px;
 }
 
-.workshop-container {
+.workshopcontainer {
   display: flex;
   align-items: flex-start;
   gap: 20px;

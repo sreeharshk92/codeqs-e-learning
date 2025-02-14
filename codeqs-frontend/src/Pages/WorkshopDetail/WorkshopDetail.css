@@ -1,0 +1,86 @@
+.workshop-page-container {
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.workshop-video-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.workshop-video-wrapper {
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 20px;
+}
+
+.workshop-video-player {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.workshop-details-content {
+  padding: 30px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 900px;
+}
+
+.workshop-details-content h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 15px;
+}
+
+.workshop-details-content p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.workshop-purchase-section {
+  padding: 25px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.workshop-purchase-button {
+  background: #007bff;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 12px 25px;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+  border: none;
+  cursor: pointer;
+}
+
+.workshop-purchase-button:hover {
+  background: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .workshop-page-container {
+    padding: 15px;
+  }
+
+  .workshop-details-content {
+    padding: 20px;
+  }
+
+  .workshop-purchase-button {
+    width: 100%;
+    padding: 12px;
+  }
+}
