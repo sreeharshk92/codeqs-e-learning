@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 export default function WorkshopCreate() {
   const initialFormState = {
+    user_id:"",
     category_id: "",
     title: "",
     description: "",
@@ -20,7 +21,17 @@ export default function WorkshopCreate() {
 
   useEffect(() => {
     fetchCategories();
+    getAuthenticatedUserId();
   }, []);
+
+ // Function to get user_id from local storage (or context)
+ const getAuthenticatedUserId = () => {
+  const storedUser = localStorage.getItem("userId"); // Ensure correct key
+  if (storedUser) {
+    setFormData((prev) => ({ ...prev, user_id: storedUser }));
+  }
+};
+
 
   const fetchCategories = async () => {
     try {
@@ -50,7 +61,7 @@ export default function WorkshopCreate() {
       const form = new FormData();
       Object.keys(formData).forEach(key => {
         if (formData[key] !== null) {
-          form.append(key, formData[key]);
+          form.append(key, formData[key]);   
         }
       });
 
@@ -59,10 +70,14 @@ export default function WorkshopCreate() {
         body: form
       });
 
+      const result = await response.json(); // Log response from backend
+    console.log("Server Response:", result);
+
       if (!response.ok) throw new Error("Failed to create product");
 
       setSuccessMessage("Product created successfully!");
       setFormData(initialFormState);
+      
       // Reset file input
       const fileInput = document.querySelector('input[type="file"]');
       if (fileInput) fileInput.value = '';

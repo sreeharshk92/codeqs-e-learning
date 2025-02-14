@@ -10,6 +10,7 @@ class Workshop extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'title',
         'description',
         'price',
@@ -43,4 +44,16 @@ class Workshop extends Model
     {
         return $this->hasMany(WorkshopVideo::class);
     }
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function payments()
+{
+    return $this->hasMany(WorkshopPayment::class, 'workshop_id');
+}
+
 }

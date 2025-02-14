@@ -24,6 +24,7 @@ import WorkshopVideoList from './Pages/admin/WorkshopVideo/WorkshopVideoList';
 import WorkshopVideoEdit from './Pages/admin/WorkshopVideo/WorkshopVideoEdit';
 import Workshop from './Pages/workshop/Workshop';
 import WorkshopDetail from './Pages/WorkshopDetail/WorkshopDetail';
+import WorkshopPaymentsList from './Pages/admin/WorkshopPayment/WorkshopPayments';
 
 const App = () => {
     return (
@@ -62,6 +63,7 @@ const App = () => {
                 <Route path="/workshopcategory/edit/:id" element={<WorkshopCategoryEdit/>} />
                 <Route path="/workshopedit/:id" element={<WorkshopEdit/>} />
                 <Route path="/workshop/videoedit/:id" element={<WorkshopVideoEdit/>} />
+                <Route path="/workshop/payments" element={<WorkshopPaymentsList />} />
                 <Route path="/admin/course/edit/:id" element={<EditCourse />} />
                 </Route>
                 {/* Catch-all route to handle invalid admin paths */}

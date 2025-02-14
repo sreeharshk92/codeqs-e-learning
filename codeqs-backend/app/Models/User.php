@@ -46,4 +46,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function payments()
+{
+    return $this->hasMany(WorkshopPayment::class, 'user_id');
+}
+
 }

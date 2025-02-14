@@ -24,6 +24,7 @@ class WorkshopSaveRequest extends FormRequest
         $isUpdateRequest = $this->isMethod('PUT') || $this->isMethod('PATCH');
 
         $rules = [
+            'user_id' => 'required|exists:users,id',
             'title' => 'required|string|max:100',
             'description' => 'required|string',
             'price' => 'required|numeric|min:0|nullable',
